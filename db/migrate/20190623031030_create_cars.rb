@@ -13,7 +13,7 @@ class CreateCars < ActiveRecord::Migration[5.2]
       t.integer :total_passengers
       t.float :daily_rate
       t.float :weekly_rate
-      t.float :montly_rate
+      t.float :monthly_rate
       t.integer :discount
       t.timestamps
     end
