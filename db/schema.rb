@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2019_06_23_033945) do
   create_table "reservations", force: :cascade do |t|
     t.string "user_id"
     t.string "location_id"
-    t.string "start_date"
-    t.string "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
