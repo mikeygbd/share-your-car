@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
   # POST /reservations
   def create
     @reservation = Reservation.new(reservation_params)
-
+    
     if @reservation.save
       render json: @reservation, status: :created, location: @reservation
     else
@@ -46,6 +46,6 @@ class ReservationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reservation_params
-      params.require(:reservation).permit(:user_id, :location_id, :start_date, :end_date)
+      params.require(:reservation).permit(:user_id, :customer_id, :location_id, :start_date, :end_date)
     end
 end
