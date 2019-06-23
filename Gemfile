@@ -17,7 +17,7 @@ gem 'puma', '~> 3.11'
 gem 'bcrypt', '~> 3.1.7'
 gem 'foreman', '~> 0.82.0'
 gem 'thor', '~> 0.19.1'
-
+gem 'fast_jsonapi'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
