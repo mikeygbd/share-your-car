@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_033945) do
+ActiveRecord::Schema.define(version: 2019_06_23_141344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,15 @@ ActiveRecord::Schema.define(version: 2019_06_23_033945) do
     t.integer "year"
     t.integer "vin"
     t.integer "milage"
-    t.string "type"
+    t.string "car_type"
     t.integer "total_passengers"
     t.float "daily_rate"
     t.float "weekly_rate"
-    t.float "montly_rate"
+    t.float "monthly_rate"
     t.integer "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "location_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -43,12 +44,12 @@ ActiveRecord::Schema.define(version: 2019_06_23_033945) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.string "user_id"
-    t.string "location_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "car_id"
+    t.integer "customer_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_06_23_033945) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hometown_id"
   end
 
 end
