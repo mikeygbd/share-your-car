@@ -4,3 +4,9 @@ import thunk from 'redux-thunk';
 import usersReducer from './reducers/users'
 import currentUser from './reducers/currentUser'
 
+
+const reducers = combineReducers({
+  users: usersReducer,
+  currentUser
+})
+
