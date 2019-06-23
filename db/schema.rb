@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2019_06_23_031030) do
 
   create_table "cars", force: :cascade do |t|
     t.integer "user_id"
+    t.string "description"
+    t.string "title"
     t.string "make"
     t.string "model"
     t.integer "year"
@@ -27,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_06_23_031030) do
     t.float "daily_rate"
     t.float "weekly_rate"
     t.float "montly_rate"
+    t.integer "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
