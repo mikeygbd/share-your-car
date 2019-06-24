@@ -1,3 +1,4 @@
+import { resetLoginForm } from "./loginForm"
 //synchronous action creators
 export const setCurrentUser = user => {
   return {
@@ -29,6 +30,7 @@ export const login = credentials => {
         alert(user.error)
       } else {
         dispatch(setCurrentUser(user))
+        dispatch(resetLoginForm())
       }
     })
     .catch(console.log)
