@@ -8,7 +8,7 @@ const NavBar = ({ currentUser }) => {
 
   return (
     <div className="NavBar">
-    <strong>{ currentUser ? `Wlecome, ${currentUser.firstname} ${currentUser.lastname}` : "" }</strong>
+    <strong>{ currentUser ? `Wlecome, ${currentUser.firstname} ${currentUser.lastname} from ${currentUser.hometown.city}  ` : "" }</strong>
     { currentUser ? <Logout/> : <Login/> }
 
     </div>
