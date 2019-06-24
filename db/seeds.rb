@@ -10,10 +10,12 @@ new_york = Location.create!(city: "New York", state: "NY", country: "United Stat
 los_angeles = Location.create!(city: "Los Angeles", state: "LA", country: "United States of America")
 san_francisco = Location.create!(city: "San Francisco", state: "SF", country: "United States of America")
 
+bob = User.create!(firstname: "Bob", lastname: "Sagget", email: "bob@gmail.com", password: "password", hometown_id: 1)
 mike = User.create!(firstname: "Mike", lastname: "Soares", email: "mikey.soares@gmail.com", password: "password", hometown_id: 1)
 ryan = User.create!(firstname: "Ryan", lastname: "Reece", email: "ryan@gmail.com", password: "password", hometown_id: 2)
 chris = User.create!(firstname: "Chris", lastname: "Reece", email: "chris@gmail.com", password: "password", hometown_id: 3)
 
+subaru = new_york.cars.create!(owner_id: 1, description: "This car is great in the snow.", make: "Subaru", model: "STI", year: 2016, car_type: "Sedan", total_passengers: 5, daily_rate: 150, weekly_rate: 800, monthly_rate: 2000 )
 tesla = new_york.cars.create!(owner_id: 1, description: "This car needs no gas", make: "Tesla", model: "Model S", year: 2018, car_type: "Sedan", total_passengers: 5, daily_rate: 200, weekly_rate: 1000, monthly_rate: 2500 )
 bmw = los_angeles.cars.create!(owner_id: 2, description: "This BMW is in Mint condition. Perfect little car for LA", make: "BMW", model: "328xi", year: 2018, car_type: "Coupe", total_passengers: 4, daily_rate: 100, weekly_rate: 600, monthly_rate: 1500 )
 mini = san_francisco.cars.create!(owner_id: 3, description: "This Mini Cooper is a Perfect little car for SF", make: "Mini", model: "Cooper", year: 2018, car_type: "Coupe", total_passengers: 4, daily_rate: 60, weekly_rate: 400, monthly_rate: 1000 )
