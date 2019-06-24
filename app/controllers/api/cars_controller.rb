@@ -3,14 +3,10 @@ class Api::CarsController < ApplicationController
 
   # GET /cars
   def index
-    if logged_in? && current_user
-    @my_cars = current_user.cars
-    render json: @my_cars
-  else
+
     @cars = Car.all
     render json: @cars
 
-  end
 end
 
   # GET /cars/1
