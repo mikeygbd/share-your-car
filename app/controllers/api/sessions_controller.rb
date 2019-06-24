@@ -22,6 +22,16 @@ end
   end
 end
 
+def my_cars
+  if logged_in?
+    render json: current_user.cars
+  else
+    render json: {
+      error: "This user has no cars"
+    }
+  end
+end
+
   def destroy
     session.clear
     render json: {
