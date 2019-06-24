@@ -1,4 +1,6 @@
 import { resetLoginForm } from "./loginForm"
+import { getMyCars } from "./myCars"
+
 //synchronous action creators
 export const setCurrentUser = user => {
   return {
@@ -30,6 +32,7 @@ export const login = credentials => {
         alert(user.error)
       } else {
         dispatch(setCurrentUser(user))
+        dispatch(getMyCars())
         dispatch(resetLoginForm())
       }
     })
@@ -63,6 +66,7 @@ export const getCurrentUser = () => {
         alert(user.error)
       } else {
         dispatch(setCurrentUser(user))
+        dispatch(getMyCars())
       }
     })
     .catch(console.log)
