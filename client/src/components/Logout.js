@@ -1,12 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { logout } from '../actions/currentUser'
+import Button from '@material-ui/core/Button';
+
 
 const Logout = ({ logout }) => {
 
+
+
   return (
     <form onSubmit={logout}>
-      <input type="submit" value="Log Out" />
+      <Button type="submit" value="Log Out" variant="contained" size="small" color="primary" type="submit" >
+             Logout
+           </Button>
     </form>
   )
 }
