@@ -1,5 +1,6 @@
 import { resetLoginForm } from "./loginForm"
 import { getMyCars } from "./myCars"
+import { getCars } from "./cars"
 
 //synchronous action creators
 export const setCurrentUser = user => {
@@ -33,6 +34,7 @@ export const login = credentials => {
       } else {
         dispatch(setCurrentUser(user))
         dispatch(getMyCars())
+        dispatch(getCars())
         dispatch(resetLoginForm())
       }
     })
@@ -51,7 +53,6 @@ export const logout = () => {
 }
 
 export const getCurrentUser = () => {
-  console.log("dispatching current user")
   return dispatch => {
     return fetch('http://localhost:3001/api/get_current_user', {
       credentials: "include",
@@ -67,6 +68,7 @@ export const getCurrentUser = () => {
       } else {
         dispatch(setCurrentUser(user))
         dispatch(getMyCars())
+        dispatch(getCars())
       }
     })
     .catch(console.log)
