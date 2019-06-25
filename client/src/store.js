@@ -5,13 +5,18 @@ import usersReducer from './reducers/users'
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
 import myCars from './reducers/myCars'
+import cars from './reducers/cars'
+
+
+
 
 
 const reducers = combineReducers({
   users: usersReducer,
   currentUser,
   loginForm,
-  myCars
+  myCars,
+  cars
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
