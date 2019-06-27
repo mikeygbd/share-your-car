@@ -21,7 +21,6 @@ export const getCars = () => {
       if (response.error) {
         alert(response.error)
       } else {
-        console.log(response)
         dispatch(setCars(response))
       }
     })
