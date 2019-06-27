@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Krona+One&display=swap');
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,18 @@
 .NavBar {
   display: flex;
   flex-direction: row;
+}
+
+.Home {
+    padding-top: 22%;
+    padding-right: 25%;
+    padding-bottom: 22%;
+    background-image: url('https://stopngorentacar.com/wp-content/uploads/luxury-cars_billboard.jpg');
+}
+
+
+.page-label {
+  background-color: #333;
+  color: #eee;
+  font-family: 'Krona One', sans-serif;
 }
