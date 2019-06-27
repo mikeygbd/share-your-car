@@ -1,5 +1,7 @@
 import { resetLoginForm } from "./loginForm"
-import { getMyCars } from "./myCars"
+import { resetSignupForm } from "./signupForm"
+
+import { getMyCars, clearMyCars} from "./myCars"
 import { getCars } from "./cars"
 
 //synchronous action creators
@@ -16,7 +18,34 @@ export const clearCurrentUser = () => {
   }
 }
 
+
+
 //asynchronous action creators
+export const signup = credentials => {
+  return dispatch => {
+    return fetch('http://localhost:3001/api/users', {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(credentials)
+    })
+    .then(r => r.json())
+    .then(user => {
+      if (user.error) {
+        alert(user.error)
+      } else {
+        dispatch(setCurrentUser(user))
+        dispatch(getMyCars())
+        dispatch(getCars())
+        dispatch(resetSignupForm())
+      }
+    })
+    .catch(console.log)
+  }
+}
+
 export const login = credentials => {
   return dispatch => {
     return fetch('http://localhost:3001/api/login', {
@@ -45,6 +74,7 @@ export const login = credentials => {
 export const logout = () => {
   return dispatch => {
     dispatch(clearCurrentUser())
+    dispatch(clearMyCars())
     return fetch('http://localhost:3001/api/logout', {
       credentials: "include",
       method: "DELETE"

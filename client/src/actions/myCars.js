@@ -6,6 +6,12 @@ export const setMyCars = cars => {
   }
 }
 
+export const clearMyCars = () => {
+  return {
+    type: "CLEAR_MY_CARS"
+  }
+}
+
 //async
 export const getMyCars = () => {
   return dispatch => {
