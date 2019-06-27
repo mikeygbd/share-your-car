@@ -10,7 +10,7 @@ const Logout = ({ logout }) => {
 
   return (
     <form onSubmit={logout}>
-      <Button type="submit" value="Log Out" variant="contained" size="small" color="primary" type="submit" >
+      <Button type="submit" variant="contained" size="small" color="primary" >
              Logout
            </Button>
     </form>
