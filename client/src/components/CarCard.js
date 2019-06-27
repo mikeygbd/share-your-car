@@ -19,14 +19,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const useStyles = makeStyles(theme => ({
   card: {
     backgroundColor: grey[400],
-    color: 'white'[500],
     width: 345,
-    height: 400,
     margin: 20,
-
-  },
-  typo: {
-
   },
   cardHeader: {
     textAlign: 'left',
@@ -48,14 +42,7 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: 'white'[500],
   },
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+
 }))
 
 
@@ -74,7 +61,7 @@ const CarCard = ({ car }) => {
       <CardHeader className={classes.cardHeader}
         avatar={
           <Avatar aria-label="Owner Img" className={classes.avatar} image={car.owner.img}>
-            <img className="owner-img" src={car.owner.img}/>
+            <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
           </Avatar>
         }
         action={
@@ -90,7 +77,7 @@ const CarCard = ({ car }) => {
           title= {title}
           />
       <CardContent>
-        <Typography variant="body2" component="p">
+        <Typography variant="body2" color="textSecondary" component="p">
           {car.description}
         </Typography>
       </CardContent>
