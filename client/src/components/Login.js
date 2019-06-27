@@ -65,7 +65,7 @@ const Login = ({ loginForm, updateLoginForm, login }) => {
          value={loginForm.password}
          onChange={handleInputChange}
        />
-     <Button variant="contained" size="small" color="primary" type="submit" className={classes.margin}>
+     <Button variant="contained" size="small" color="primary" type="submit" onSubmit={handleSubmit} className={classes.margin}>
             Login
           </Button>
     </form>
