@@ -3,17 +3,19 @@ import CarCard from './CarCard'
 import { connect } from 'react-redux'
 
 
-const Cars = ({ allCars }) => {
-  const carCards = allCars.length > 0 ? allCars.map(c => <CarCard car={c} key={c.id}/>) : null
+const Cars = ({ cars }) => {
+  const carCards = cars.length > 0 ? cars.map(c => <CarCard car={c} key={c.id}/>) : null
 
   return (
-     carCards
+    <div className="Cars">
+     {carCards}
+     </div>
   )
 }
 
 const mapStateToProps = state => {
   return {
-    allCars: state.cars
+    cars: state.cars
   }
 }
 
