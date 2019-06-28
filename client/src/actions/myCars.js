@@ -59,7 +59,7 @@ export const signupCar = carInfo => {
       if (response.error) {
         alert(response.error)
       } else {
-        dispatch(setNewCar(carInfo))
+        dispatch(setNewCar(response))
         dispatch(getMyCars())
         dispatch(resetSignupCarForm())
       }
