@@ -37,6 +37,8 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <form id="multi-form" onSubmit={handleSubmit}>
         <TextField
         name="make"
+        type="text"
+
         placeholder="Make"
         onChange={handleChange}
         value={signupCarFormData.make}
@@ -45,6 +47,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <br />
         <TextField
         name="model"
+        type="text"
         placeholder="Model"
         onChange={handleChange}
         value={signupCarFormData.model}
@@ -53,6 +56,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <br />
         <TextField
         name="year"
+        type="text"
         placeholder="Year"
         onChange={handleChange}
         value={signupCarFormData.year}
@@ -61,6 +65,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <br />
         <TextField
         name="img"
+        type="text"
         placeholder="IMG"
         onChange={handleChange}
         value={signupCarFormData.img}
@@ -70,7 +75,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <br />
         <TextField
         name="daily_rate"
-        type="price"
+        type="text"
         placeholder="Daily Rate"
         onChange={handleChange}
         value={signupCarFormData.daily_rate}
@@ -79,7 +84,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <br />
         <TextField
         name="weekly_rate"
-        type="price"
+        type="text"
         placeholder="Weekly Rate"
         onChange={handleChange}
         value={signupCarFormData.weekly_rate}
@@ -88,12 +93,14 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <br />
         <TextField
         name="monthly_rate"
-        type="price"
+        type="text"
         placeholder="Monthly Rate"
         onChange={handleChange}
         value={signupCarFormData.monthly_rate}
 
         />
+        <br />
+
         <TextField
         name="description"
         type="text"
