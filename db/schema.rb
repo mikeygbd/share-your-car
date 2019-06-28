@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_105830) do
+ActiveRecord::Schema.define(version: 2019_06_28_151040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2019_06_28_105830) do
     t.integer "car_id"
     t.integer "customer_id"
     t.integer "owner_id"
+    t.string "start_time"
+    t.string "end_time"
   end
 
   create_table "reviews", force: :cascade do |t|
