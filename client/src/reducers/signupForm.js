@@ -4,6 +4,7 @@ const initialState = {
   lastname: "",
   email: "",
   password: "",
+  img: "",
   hometown: {
     city: "",
     state: "",
