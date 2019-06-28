@@ -42,6 +42,16 @@ def my_reservations
   end
 end
 
+def my_bookings
+  if logged_in?
+    render json: current_user.bookings
+  else
+    render json: {
+      error: "This user has no bookings"
+    }
+  end
+end
+
   def destroy
     session.clear
     render json: {
