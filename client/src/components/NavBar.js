@@ -1,6 +1,9 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import PropTypes from 'prop-types'
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -14,13 +17,40 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Login from './Login'
-import Logout from './Logout'
 import { connect } from 'react-redux'
 import navCss from '../styles/navbar.css'
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+function LinkTab(props) {
+  return (
+    <Tab
+      component="a"
+      onClick={event => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
   grow: {
     flexGrow: 1,
   },
@@ -87,8 +117,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
+
+const AdapterLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
+
 const NavBar = ({ currentUser }) => {
 
+  const [value, setValue] = React.useState(0);
   const classes = useStyles();
  const [anchorEl, setAnchorEl] = React.useState(null);
  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -113,6 +149,19 @@ const NavBar = ({ currentUser }) => {
    setMobileMoreAnchorEl(event.currentTarget);
  }
 
+ function handleSignupClick(e) {
+   e.preventDefault()
+
+   const url = (window.location.href + 'signup')
+   return(
+     window.location.href = url
+   )
+ }
+
+ function handleChange(event, newValue) {
+   setValue(newValue);
+ }
+
  const menuId = 'primary-search-account-menu';
  const renderMenu = (
    <Menu
@@ -124,8 +173,8 @@ const NavBar = ({ currentUser }) => {
      open={isMenuOpen}
      onClose={handleMenuClose}
    >
-     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-     <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+     <MenuItem label='My Profile' to='/my_profile' component={Link}>MY Profile</MenuItem>
+
    </Menu>
  );
 
@@ -173,6 +222,7 @@ const NavBar = ({ currentUser }) => {
 
   return (
     <div className={classes.grow}>
+      <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -184,38 +234,26 @@ const NavBar = ({ currentUser }) => {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            <strong>{ currentUser ? `Wlecome, ${currentUser.firstname} ${currentUser.lastname} from ${currentUser.hometown.city}` : "" }</strong>
+            <strong>{ currentUser ? `Wlecome, ${currentUser.firstname} ${currentUser.lastname}` : "" }</strong>
           </Typography>
           <br />
           <div className="login-logout-btn">
-            { currentUser ? <Logout/> : <Login/> }
+
+          </div>
+          <div className="tabs">
+          <Tabs variant="fullWidth" value={value} onChange={handleChange}>
+            { currentUser ? <Tab label='Logout'  to='/logout' component={Link} /> : <Tab label='Login'  to='/login' component={Link} />}
+            { currentUser ? null : <Tab label='Sign Up'  to='/signup' component={Link} />}
+            { currentUser ? <Tab label='My Cars'  to='/my_cars' component={Link} /> : null}
+            <Tab label='Cars'  to='/cars' component={Link} />
+            <Tab label='Home'  to='/' component={Link} />
+            <Tab label='Search'  to='/search' component={Link} />
+          </Tabs>
           </div>
 
+
           <div className={classes.grow} />
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'Search' }}
-              />
-            </div>
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="Show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="Show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
             <IconButton
               edge="end"
               aria-label="Account of current user"
@@ -242,7 +280,10 @@ const NavBar = ({ currentUser }) => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+
     </div>
+
+      </div>
 
 
 
