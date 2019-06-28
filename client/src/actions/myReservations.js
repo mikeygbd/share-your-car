@@ -43,23 +43,26 @@ export const getMyReservations = () => {
   }
 }
 
-export const createReservation = reservationsInfo => {
+export const createReservation = credentials => {
   return dispatch => {
+    const reservationInfo = {
+      reservation: credentials
+    }
 
-    return fetch('http://localhost:3001/api/creat_reservation', {
+    return fetch('http://localhost:3001/api/create_reservation', {
       credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(reservationsInfo)
+      body: JSON.stringify(reservationInfo)
     })
     .then(r => r.json())
     .then(response => {
       if (response.error) {
         alert(response.error)
       } else {
-        dispatch(setNewReservation(reservationsInfo))
+        dispatch(setNewReservation(response))
         dispatch(getMyReservations())
         dispatch(resetCreateReservationForm())
       }
