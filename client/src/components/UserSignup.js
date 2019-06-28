@@ -79,6 +79,14 @@ const UserSignup = ({ history, signupFormData, updateSignupForm, signup}) => {
         onChange={handleUserChange}
         value={signupFormData.password}
         />
+        <br />
+        <TextField
+        name="img"
+        type="text"
+        placeholder="Img URL"
+        onChange={handleUserChange}
+        value={signupFormData.img}
+        />
 
         <br />
         <TextField
