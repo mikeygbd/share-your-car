@@ -1,6 +1,8 @@
 import { resetLoginForm } from "./loginForm"
 import { resetSignupForm } from "./signupForm"
 import { getMyCars, clearMyCars} from "./myCars"
+import { getMyReservations, clearMyReservations} from "./myReservations"
+
 import { getCars } from "./cars"
 
 //synchronous action creators
@@ -22,28 +24,34 @@ export const clearCurrentUser = () => {
 //asynchronous action creators
 export const signup = credentials => {
   return dispatch => {
-    return fetch('http://localhost:3001/api/users', {
+    const userInfo = {
+      user: credentials
+    }
+    return fetch('http://localhost:3001/api/signup', {
       credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(userInfo)
     })
     .then(r => r.json())
-    .then(user => {
-      if (user.error) {
-        alert(user.error)
+    .then(response => {
+      if (response.error) {
+        alert(response.error)
       } else {
-        dispatch(setCurrentUser(user))
-        dispatch(getMyCars())
+        dispatch(setCurrentUser(response))
         dispatch(getCars())
         dispatch(resetSignupForm())
+
+
       }
     })
     .catch(console.log)
   }
 }
+
+
 
 export const login = credentials => {
   return dispatch => {
@@ -60,8 +68,10 @@ export const login = credentials => {
       if (user.error) {
         alert(user.error)
       } else {
+        console.log(user)
         dispatch(setCurrentUser(user))
         dispatch(getMyCars())
+        dispatch(getMyReservations())
         dispatch(getCars())
         dispatch(resetLoginForm())
       }
@@ -97,6 +107,7 @@ export const getCurrentUser = () => {
       } else {
         dispatch(setCurrentUser(user))
         dispatch(getMyCars())
+        dispatch(getMyReservations())
         dispatch(getCars())
       }
     })
