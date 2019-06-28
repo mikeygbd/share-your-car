@@ -19,12 +19,12 @@ import ReservationForm from './components/ReservationForm';
 
 class App extends React.Component {
 
-
   componentDidMount() {
     this.props.getCurrentUser()
     this.props.getCars()
 
   }
+
 
   render() {
   return (
