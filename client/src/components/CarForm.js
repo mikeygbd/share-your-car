@@ -12,6 +12,114 @@ import { withRouter } from 'react-router-dom';
 const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) => {
 
 
+  const handleChange = event => {
+    const { name, value } = event.target
+    const updatedFormInfo = {
+      ...signupCarFormData,
+      [name]: value
+    }
+    updateSignupCarForm(updatedFormInfo)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    signupCar(signupCarFormData)
+    history.push('/my_profile')
+  }
+
+    return (
+    <div className="UserForm">
+
+        <div className="UserForm-title">
+        <Toolbar>Enter Your Car Details</Toolbar>
+        </div>
+        <br />
+        <form id="multi-form" onSubmit={handleSubmit}>
+        <TextField
+        name="make"
+        placeholder="Make"
+        onChange={handleChange}
+        value={signupCarFormData.make}
+        required
+        />
+        <br />
+        <TextField
+        name="model"
+        placeholder="Model"
+        onChange={handleChange}
+        value={signupCarFormData.model}
+        required
+        />
+        <br />
+        <TextField
+        name="year"
+        placeholder="Year"
+        onChange={handleChange}
+        value={signupCarFormData.year}
+        required
+        />
+        <br />
+        <TextField
+        name="img"
+        placeholder="IMG"
+        onChange={handleChange}
+        value={signupCarFormData.img}
+        required
+        />
+
+        <br />
+        <TextField
+        name="daily_rate"
+        type="price"
+        placeholder="Daily Rate"
+        onChange={handleChange}
+        value={signupCarFormData.daily_rate}
+        required
+        />
+        <br />
+        <TextField
+        name="weekly_rate"
+        type="price"
+        placeholder="Weekly Rate"
+        onChange={handleChange}
+        value={signupCarFormData.weekly_rate}
+
+        />
+        <br />
+        <TextField
+        name="monthly_rate"
+        type="price"
+        placeholder="Monthly Rate"
+        onChange={handleChange}
+        value={signupCarFormData.monthly_rate}
+
+        />
+        <TextField
+        name="description"
+        type="text"
+        placeholder="Description"
+        onChange={handleChange}
+        value={signupCarFormData.description}
+
+        />
+        <br />
+
+        <div className="reg-btn">
+
+        <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        onClick={handleSubmit}
+        >Sign Up</Button>
+
+        </div>
+
+
+    </form>
+</div>
+    )
+  }
 
 
 const mapStateToProps = state => {
