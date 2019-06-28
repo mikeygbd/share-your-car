@@ -1,8 +1,16 @@
+import { resetSignupCarForm } from "./signupCarForm"
 //sync
 export const setMyCars = cars => {
   return {
     type: "SET_MY_CARS",
     cars
+  }
+}
+
+export const setNewCar = car => {
+  return {
+    type: "SET_NEW_CAR",
+    car
   }
 }
 
@@ -32,5 +40,30 @@ export const getMyCars = () => {
     })
     .catch(console.log)
 
+  }
+}
+
+export const signupCar = carInfo => {
+  return dispatch => {
+
+    return fetch('http://localhost:3001/api/signup_car', {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(carInfo)
+    })
+    .then(r => r.json())
+    .then(response => {
+      if (response.error) {
+        alert(response.error)
+      } else {
+        dispatch(setNewCar(carInfo))
+        dispatch(getMyCars())
+        dispatch(resetSignupCarForm())
+      }
+    })
+    .catch(console.log)
   }
 }
