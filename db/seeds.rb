@@ -29,13 +29,12 @@ ryan = User.second
 chris = User.third
 bob = User.fourth
 joe = User.fifth
-rick = User.fifth
 
-tesla = Car.first
-bmw = Car.second
-mini = Car.third
-mustang = Car.fourth
-jeep = Car.fifth
+subaru = Car.first
+tesla = Car.second
+bmw = Car.third
+mini = Car.fourth
+mustang = Car.fifth
 
 mike_bmw = bmw.reservations.create!(customer_id: 1, owner_id: 2, start_date: "2019-7-12 01:38:54", end_date: "2019-7-15 01:38:54.840" )
 mike.reviews.create(content: "This Car was very fast and fun", car: bmw)
