@@ -33,7 +33,7 @@ class App extends React.Component {
     <NavBar/>
       <Switch>
         <Route exact path='/my_cars' render={props => <MyCars {...props} />}  />
-        <Route exact path='/reservation_form' render={props => <ReservationForm {...props} />}  />
+        <Route exact path='/create_reservation' render={props => <ReservationForm {...props} />}  />
         <Route exact path='/cars' render={props => <Cars {...props} />}  />
         <Route exact path='/login' render={props => <Login {...props} />}  />
         <Route exact path='/logout' render={props => <Logout {...props} />}  />
@@ -41,6 +41,8 @@ class App extends React.Component {
         <Route exact path='/search' render={props => <Search {...props} />} />
         <Route exact path='/my_profile' render={props => <MyProfile {...props} />}  />
         <Route exact path='/car_form' render={props => <CarForm {...props} />}  />
+        <Route exact path='/delete_car' render={props => <Logout {...props} />}  />
+
         <Route component={Home} />
       </Switch>
     </div>
