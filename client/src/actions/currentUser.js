@@ -2,7 +2,7 @@ import { resetLoginForm } from "./loginForm"
 import { resetSignupForm } from "./signupForm"
 import { getMyCars, clearMyCars} from "./myCars"
 import { getMyReservations, clearMyReservations} from "./myReservations"
-
+import { getMyBookings, clearMyBookings} from "./myBookings"
 import { getCars } from "./cars"
 
 //synchronous action creators
@@ -72,6 +72,7 @@ export const login = credentials => {
         dispatch(setCurrentUser(user))
         dispatch(getMyCars())
         dispatch(getMyReservations())
+        dispatch(getMyBookings())
         dispatch(getCars())
         dispatch(resetLoginForm())
       }
@@ -84,6 +85,8 @@ export const logout = () => {
   return dispatch => {
     dispatch(clearCurrentUser())
     dispatch(clearMyCars())
+    dispatch(clearMyReservations())
+    dispatch(clearMyBookings())
     return fetch('http://localhost:3001/api/logout', {
       credentials: "include",
       method: "DELETE"
@@ -107,6 +110,7 @@ export const getCurrentUser = () => {
       } else {
         dispatch(setCurrentUser(user))
         dispatch(getMyCars())
+        dispatch(getMyBookings())
         dispatch(getMyReservations())
         dispatch(getCars())
       }
