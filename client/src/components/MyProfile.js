@@ -20,6 +20,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { connect } from 'react-redux'
 import CarCard from './CarCard'
+import BookingCard from './BookingCard'
 import ReservationCard from './ReservationCard'
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -34,9 +35,10 @@ const useStyles = makeStyles({
   },
 });
 
-const MyProfile = ({myCars, currentUser, myReservations}) => {
+const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
   const carCards = myCars.length > 0 ? myCars.map(c => <CarCard car={c} key={c.id}/>) : null
   const reservationCards = myReservations.length > 0 ? myReservations.map(r => <ReservationCard reservation={r} key={r.id}/>) : null
+  const bookingCards = myBookings.length > 0 ? myBookings.map(b => <BookingCard booking={b} key={b.id}/>) : null
 
 
   const classes = useStyles();
@@ -79,9 +81,9 @@ const MyProfile = ({myCars, currentUser, myReservations}) => {
 
     <div className="UserForm-mc profile-panels">
     <div className="UserForm-title-mc">
-      <Toolbar>My Cars Reservations</Toolbar>
+      <Toolbar>My Bookings</Toolbar>
     </div>
-    {carCards}
+    {bookingCards ? bookingCards : <h3>No Bookings At This Time</h3>}
     </div>
 
     <div className="UserForm-mc profile-panels">
@@ -97,10 +99,11 @@ const MyProfile = ({myCars, currentUser, myReservations}) => {
 
 }
 
-const mapStateToProps = ({currentUser, myCars, myReservations}) => {
+const mapStateToProps = ({currentUser, myCars, myReservations, myBookings}) => {
   return {
     currentUser,
     myReservations,
+    myBookings,
     myCars
   }
 }
