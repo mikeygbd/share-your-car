@@ -15,6 +15,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux'
+import '../styles/car.css'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -46,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const CarCard = ({ car }) => {
+const CarCard = ({ car, currentUser }) => {
   const classes = useStyles()
 
   const [expanded, setExpanded] = React.useState(false)
@@ -85,9 +89,16 @@ const CarCard = ({ car }) => {
         <IconButton aria-label="Add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="Share">
-          <ShareIcon />
-        </IconButton>
+
+        {currentUser && (car.owner.email === currentUser.email) ?
+          <Button label='MyCars' color="primary" to='/my_cars' component={Link}  aria-label="Share">
+            My Car
+          </Button>
+           :
+        <Button label='ReservationForm' color="primary" to='/reservation_form' component={Link}  aria-label="Share">
+          Reserve
+        </Button>}
+
         <IconButton
        className={clsx(classes.expand, {
          [classes.expandOpen]: expanded,
@@ -115,4 +126,10 @@ const CarCard = ({ car }) => {
   )
 }
 
-export default CarCard
+const mapStateToProps = ({currentUser}) => {
+  return {
+    currentUser
+  }
+}
+
+export default connect(mapStateToProps)(CarCard)
