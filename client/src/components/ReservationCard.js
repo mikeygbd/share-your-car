@@ -66,7 +66,7 @@ let year = d.getFullYear()
 let time = d.getTime()
 
 
-return monthNames[monthIndex] + '/' + day + '/' + year + '  ' + time
+return monthNames[monthIndex] + '/' + day + '/' + year
 }
 
   const classes = useStyles()
@@ -126,7 +126,10 @@ return monthNames[monthIndex] + '/' + day + '/' + year + '  ' + time
           <Typography>
             {reservation.reviews[0]}
             Start Date: {resDate(reservation.start_date)}<br />
+          Start Time: {resDate(reservation.start_time)}<br />
           Return Date: {resDate(reservation.end_date)}<br />
+        Return Time: {resDate(reservation.time)}<br />
+
 
         Daily Rate: ${reservation.car.daily_rate}<br />
       Weekly Rate: ${reservation.car.weekly_rate}<br />
