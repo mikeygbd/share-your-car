@@ -24,7 +24,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
   const handleSubmit = event => {
     event.preventDefault()
     signupCar(signupCarFormData)
-    history.push('/my_profile')
+    history.push('/my_cars')
   }
 
     return (
