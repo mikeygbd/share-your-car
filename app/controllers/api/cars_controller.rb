@@ -16,10 +16,12 @@ end
 
   # POST /cars
   def create
+    
     @car = Car.new(car_params)
-
+    @car.owner = current_user
+    @car.location = current_user.hometown
     if @car.save
-      render json: @car, status: :created, location: @car
+      render json: @car, status: :created
     else
       render json: @car.errors, status: :unprocessable_entity
     end
@@ -47,6 +49,6 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:user_id, :location_id, :make, :model, :year, :vin, :milage, :car_type, :total_passengers, :daily_rate, :weekly_rate, :monthly_rate)
+      params.require(:car).permit(:user_id, :location_id, :img, :make, :model, :year, :vin, :milage, :car_type, :total_passengers, :daily_rate, :weekly_rate, :monthly_rate)
     end
 end
