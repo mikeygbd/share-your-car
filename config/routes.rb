@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get '/get_current_user', to: "sessions#get_current_user"
   delete '/logout', to: "sessions#destroy"
   get '/users/:id/cars', to: "sessions#my_cars"
+  post '/signup', to: "users#create"
+  post '/signup_car', to: "cars#create"
+  post '/creat_reservation', to: "reservations#create"
+  get '/users/:id/reservations', to: "sessions#my_reservations"
+
 
   resources :users
   resources :cars
