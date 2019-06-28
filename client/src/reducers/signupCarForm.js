@@ -5,9 +5,10 @@ const initialState = {
   year: "",
   daily_rate: "",
   weekly_rate: "",
+  description: "",
   monthly_rate: "",
-  img: "",
-  description: ""
+  img: ""
+
 }
 
 export default (state=initialState, action) => {
