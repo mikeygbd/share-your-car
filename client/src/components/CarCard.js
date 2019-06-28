@@ -15,10 +15,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { connect } from 'react-redux'
 import '../styles/car.css'
+import { updateCreateReservationForm } from '../actions/createReservationForm'
+
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -50,13 +53,37 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const CarCard = ({ car, currentUser }) => {
+
+
+const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, car, currentUser }) => {
   const classes = useStyles()
 
   const [expanded, setExpanded] = React.useState(false)
   const title = `${car.make} ${car.model}`
   function handleExpandClick() {
     setExpanded(!expanded)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const updatedFormInfo = {
+      ...createReservationFormData,
+      car: {
+          id: car.id,
+          make: car.make,
+          model: car.model,
+          year: car.year,
+          img: car.img,
+          daily_rate: car.daily_rate,
+          weekly_rate: car.weekly_rate,
+          monthly_rate: car.monthly_rate,
+          description: car.description
+      }
+    }
+
+    updateCreateReservationForm(updatedFormInfo)
+    history.push('/create_reservation')
+
   }
 
   return (
@@ -87,7 +114,13 @@ const CarCard = ({ car, currentUser }) => {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="Add to favorites">
-          <FavoriteIcon />
+          {currentUser && (car.owner.email === currentUser.email) ?
+            <DeleteOutlinedIcon  />
+
+             :
+             <FavoriteIcon />
+
+            }
         </IconButton>
 
         {currentUser && (car.owner.email === currentUser.email) ?
@@ -95,7 +128,7 @@ const CarCard = ({ car, currentUser }) => {
             My Car
           </Button>
            :
-        <Button label='ReservationForm' color="primary" to='/reservation_form' component={Link}  aria-label="Share">
+        <Button onClick={handleSubmit}  aria-label="Share">
           Reserve
         </Button>}
 
@@ -126,10 +159,12 @@ const CarCard = ({ car, currentUser }) => {
   )
 }
 
-const mapStateToProps = ({currentUser}) => {
+const mapStateToProps = state => {
   return {
-    currentUser
+    currentUser: state.currentUser,
+    createReservationFormData: state.createReservationForm
+
   }
 }
 
-export default connect(mapStateToProps)(CarCard)
+export default withRouter(connect(mapStateToProps, { updateCreateReservationForm})(CarCard))
