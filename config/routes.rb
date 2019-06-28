@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get '/users/:id/cars', to: "sessions#my_cars"
   post '/signup', to: "users#create"
   post '/signup_car', to: "cars#create"
-  post '/creat_reservation', to: "reservations#create"
+  post '/create_reservation', to: "reservations#create"
   get '/users/:id/reservations', to: "sessions#my_reservations"
+  delete '/cars/:id/destroy', to: "cars#destroy"
 
 
   resources :users
