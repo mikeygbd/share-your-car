@@ -1,8 +1,11 @@
 
 const initialState = {
   start_date: "",
+  start_time: "",
   end_date: "",
+  end_time: "",
     car: {
+      car_id: "",
       make: "",
       model: "",
       year: "",
