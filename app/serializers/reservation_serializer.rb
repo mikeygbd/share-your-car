@@ -3,5 +3,6 @@ class ReservationSerializer < ActiveModel::Serializer
   belongs_to :car, serializer: CarSerializer
   belongs_to :owner, serializer: OwnerSerializer
   belongs_to :customer, serializer: CustomerSerializer
-  has_one :location, serializer: LocationSerializer
+  has_many :reviews, serializer: ReviewSerializer
+
 end
