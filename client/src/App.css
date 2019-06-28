@@ -67,6 +67,12 @@
   min-height: 100vh;
   background-image: url('https://stmed.net/sites/default/files/mercedes-wallpapers-32386-5638916.jpg');
 }
+.Reservation {
+  padding-top: 1%;
+  background-size: cover;
+  min-height: 100vh;
+  background-image: url('https://www.bymexclusive.com/wp-content/uploads/2017/04/Ferrari-458-Italia-Spider.jpeg');
+}
 
 .welcome-card {
 height: auto;
