@@ -16,7 +16,14 @@ class Api::ReservationsController < ApplicationController
   # POST /reservations
   def create
     @reservation = Reservation.new(reservation_params)
-    @reservation.customer = currentUser
+    
+    @car = Car.find_by(make: params[:reservation][:car][:make], model: params[:reservation][:car][:model], year: params[:reservation][:car][:year], daily_rate: params[:reservation][:car][:daily_rate], weekly_rate: params[:reservation][:car][:weekly_rate], monthly_rate: params[:reservation][:car][:monthly_rate], img: params[:reservation][:car][:img], description: params[:reservation][:car][:description] )
+    @reservation.customer = current_user
+    @reservation.car = @car
+    @reservation.owner = @car.owner
+
+
+
 
 
     if @reservation.save
