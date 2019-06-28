@@ -5,6 +5,9 @@ import { login } from '../actions/currentUser'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import '../styles/registration.css'
+import Toolbar from '@material-ui/core/Toolbar';
+import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -24,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Login = ({ loginForm, updateLoginForm, login }) => {
+const Login = ({ history, loginForm, updateLoginForm, login }) => {
   const classes = useStyles();
 
 
@@ -40,11 +43,18 @@ const Login = ({ loginForm, updateLoginForm, login }) => {
   const handleSubmit = event => {
     event.preventDefault()
     login(loginForm)
+    history.push('/')
+
 
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="Login">
+    <div className="UserForm">
+      <div className="UserForm-title">
+      <Toolbar>Log in</Toolbar>
+      </div>
+    <form id="multi-form" onSubmit={handleSubmit}>
       <TextField
         id="standard-with-placeholder"
         type="text"
@@ -55,6 +65,7 @@ const Login = ({ loginForm, updateLoginForm, login }) => {
         onChange={handleInputChange}
 
       />
+    <br />
       <TextField
          id="standard-password-input"
          name="password"
@@ -65,10 +76,18 @@ const Login = ({ loginForm, updateLoginForm, login }) => {
          value={loginForm.password}
          onChange={handleInputChange}
        />
+       <br />
+       <div className="reg-btn">
      <Button variant="contained" size="small" color="primary" type="submit" onSubmit={handleSubmit} className={classes.margin}>
             Login
           </Button>
+          </div>
+          <br />
+
     </form>
+  </div>
+  </div>
+
   )
 }
 
@@ -79,4 +98,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updateLoginForm, login })(Login)
+export default withRouter(connect(mapStateToProps, { updateLoginForm, login })(Login))
