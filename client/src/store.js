@@ -4,9 +4,12 @@ import thunk from 'redux-thunk';
 import usersReducer from './reducers/users'
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
+import signupForm from './reducers/signupForm'
 import myCars from './reducers/myCars'
 import cars from './reducers/cars'
-
+import signupCarForm from './reducers/signupCarForm'
+import createReservationForm from './reducers/createReservationForm'
+import myReservations from './reducers/myReservations'
 
 
 
@@ -15,7 +18,11 @@ const reducers = combineReducers({
   users: usersReducer,
   currentUser,
   loginForm,
+  signupForm,
   myCars,
+  signupCarForm,
+  createReservationForm,
+  myReservations,
   cars
 })
 
