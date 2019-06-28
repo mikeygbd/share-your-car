@@ -5,4 +5,7 @@ class User < ApplicationRecord
   belongs_to :hometown, class_name: "Location"
   has_many :reservations, foreign_key: :customer_id, class_name: "Reservation"
   has_many :reviews
+
+  validates :firstname, :lastname, :email, :hometown, presence: true
+  validates :email, uniqueness: true
 end
