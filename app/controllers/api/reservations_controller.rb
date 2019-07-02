@@ -55,6 +55,6 @@ class Api::ReservationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reservation_params
-      params.require(:reservation).permit(:owner_id, :customer_id, :location_id, :start_date, :end_date)
+      params.require(:reservation).permit(:owner_id, :customer_id, :location_id, :start_date, :start_time, :end_date, :end_time)
     end
 end
