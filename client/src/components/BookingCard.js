@@ -125,9 +125,9 @@ return monthNames[monthIndex] + '/' + day + '/' + year
         <CardContent>
           <Typography>
             Start Date: {resDate(booking.start_date)}<br />
-          Start Time: {resDate(booking.start_time)}<br />
-          Return Date: {resDate(booking.end_date)}<br />
-        Return Time: {resDate(booking.time)}<br />
+          Start Time: {booking.start_time}<br />
+        Return Date: {resDate(booking.end_date)}<br />
+        Return Time: {booking.end_time}<br />
 
 
         Daily Rate: ${booking.car.daily_rate}<br />
