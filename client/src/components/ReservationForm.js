@@ -23,7 +23,7 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
 
 
   const handleSubmit = event => {
-    
+
     event.preventDefault()
     createReservation(createReservationFormData)
     history.push('/')
@@ -62,8 +62,7 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
         <TextField
         name="end_date"
         type="date"
-
-        placeholder="End Date"
+        placeholder="Return Date"
         onChange={handleChange}
         value={createReservationFormData.end_date}
         required
@@ -72,7 +71,7 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
           <TextField
           name="end_time"
           type="time"
-          placeholder="End Time (12:30)"
+          placeholder="Return Time (12:30)"
           onChange={handleChange}
           value={createReservationFormData.end_time}
           required
