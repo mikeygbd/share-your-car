@@ -41,7 +41,7 @@
 .tabs {
   display: flex;
   flex-flow: wrap;
-  padding-left: 8%;
+  padding-left: 60px;
 }
 
 .Home {
@@ -140,4 +140,9 @@ background-color: rgba(0,0,0,0.5) !important;
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 5%;
+}
+
+.navbar-space {
+
+  padding-right: 190px;
 }

@@ -241,13 +241,16 @@ const NavBar = ({ currentUser }) => {
 
           </div>
           <div className="tabs">
+            {!currentUser ? <div className="navbar-space"></div> : null}
           <Tabs variant="fullWidth" value={value} onChange={handleChange}>
-            { currentUser ? <Tab label='Logout'  to='/logout' component={Link} /> : <Tab label='Login'  to='/login' component={Link} />}
-            { currentUser ? null : <Tab label='Sign Up'  to='/signup' component={Link} />}
-            { currentUser ? <Tab label='My Cars'  to='/my_cars' component={Link} /> : null}
-            <Tab label='Cars'  to='/cars' component={Link} />
-            <Tab label='Home'  to='/' component={Link} />
-            <Tab label='Search'  to='/search' component={Link} />
+
+            <Tab centered='true' label='Home'  to='/' component={Link} />
+            { currentUser ? <Tab centered='true' label='My Cars'  to='/my_cars' component={Link} /> : null}
+            <Tab centered='true' label='Cars'  to='/cars' component={Link} />
+            { currentUser ? <Tab centered='true' label='Profile'  to='/my_profile' component={Link} /> : null}
+            { currentUser ? <Tab centered='true' label='Logout'  to='/logout' component={Link} /> : <Tab centered='true' label='Login'  to='/login' component={Link} />}
+            { currentUser ? null : <Tab centered='true' label='Sign Up'  to='/signup' component={Link} />}
+
           </Tabs>
           </div>
 
