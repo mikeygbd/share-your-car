@@ -4,6 +4,8 @@ export default (state = [], action) => {
     return action.reservations
     case "CLEAR_MY_RESERVATIONS":
     return []
+    case "SET_NEW_MY_RESERVATION":
+    return [...state, action.reservation]
     default:
     return state
   }
