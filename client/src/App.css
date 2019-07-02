@@ -74,6 +74,15 @@
   background-image: url('https://www.bymexclusive.com/wp-content/uploads/2017/04/Ferrari-458-Italia-Spider.jpeg');
 }
 
+.year-rating {
+  display: flex;
+
+}
+
+.year {
+  padding-right: 1%;
+}
+
 .welcome-card {
 height: auto;
 margin: auto;

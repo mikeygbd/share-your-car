@@ -123,16 +123,17 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
        }
        title={title}
        subheader={
-          <>
-         {car.year}
+          <div className="year-rating">
+          <div className="year">
+          {car.year}
+          </div>
          <StarRatingComponent
              name="rate2"
              editing={false}
              starCount={5}
              value={avg}
            />
-
-         </>
+         </div>
        }
        />
         <CardMedia
