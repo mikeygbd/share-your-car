@@ -14,6 +14,13 @@ export const setNewCar = car => {
   }
 }
 
+const setNewMyCar = car => {
+  return {
+    type: "SET_NEW_MY_CAR",
+    car
+  }
+}
+
 export const clearMyCars = () => {
   return {
     type: "CLEAR_MY_CARS"
@@ -60,7 +67,7 @@ export const signupCar = carInfo => {
         alert(response.error)
       } else {
         dispatch(setNewCar(response))
-        dispatch(getMyCars())
+        dispatch(setNewMyCar(response))
         dispatch(resetSignupCarForm())
       }
     })
