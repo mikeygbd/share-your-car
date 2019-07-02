@@ -28,7 +28,9 @@
 
 
 
-
+.car-thumbnail {
+  width: 60px;
+}
 
 .owner-img {
   width: 40px;
