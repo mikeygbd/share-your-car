@@ -15,9 +15,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import ReviewCard from './ReviewCard';
 import Button from '@material-ui/core/Button';
+import { updateCreateReviewForm } from '../actions/createReviewForm'
+import { connect } from 'react-redux'
+
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -50,7 +54,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const ReservationCard = ({ reservation }) => {
+const ReservationCard = ({ reservation, createReviewFormData, updateCreateReviewForm, currentUser, history }) => {
   const resDate = (date) => {
 let d = new Date(date)
 let monthNames = [
@@ -75,6 +79,30 @@ return monthNames[monthIndex] + '/' + day + '/' + year
   const title = `${reservation.car.make} ${reservation.car.model}`
   function handleExpandClick() {
     setExpanded(!expanded)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const updatedFormInfo = {
+      ...createReviewFormData,
+      car: {
+          id: reservation.car_id,
+          make: reservation.car.make,
+          model: reservation.car.model,
+          year: reservation.car.year,
+          img: reservation.car.img,
+          daily_rate: reservation.car.daily_rate,
+          weekly_rate: reservation.car.weekly_rate,
+          monthly_rate: reservation.car.monthly_rate,
+          description: reservation.car.description
+      },
+      reservation_id: reservation.id,
+      customer_id: currentUser.id
+    }
+
+    updateCreateReviewForm(updatedFormInfo)
+    history.push('/create_review')
+
   }
 
   return (
@@ -107,7 +135,7 @@ return monthNames[monthIndex] + '/' + day + '/' + year
         <IconButton aria-label="Add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <Button label='ReviewForm' color="primary" to='/review_form' component={Link}  aria-label="Share">
+        <Button label='ReviewForm' color="primary" onClick={handleSubmit} aria-label="Share">
           Review
         </Button>
         <IconButton
@@ -124,11 +152,10 @@ return monthNames[monthIndex] + '/' + day + '/' + year
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
-            {reservation.reviews[0]}
             Start Date: {resDate(reservation.start_date)}<br />
-          Start Time: {resDate(reservation.start_time)}<br />
+          Start Time: {reservation.start_time}<br />
           Return Date: {resDate(reservation.end_date)}<br />
-        Return Time: {resDate(reservation.time)}<br />
+        Return Time: {reservation.end_time}<br />
 
 
         Daily Rate: ${reservation.car.daily_rate}<br />
@@ -144,4 +171,13 @@ return monthNames[monthIndex] + '/' + day + '/' + year
   )
 }
 
-export default ReservationCard
+const mapStateToProps = state => {
+  return {
+    reviews: state.reviews,
+    currentUser: state.currentUser,
+    createReviewFormData: state.createReviewFormData
+
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { updateCreateReviewForm })(ReservationCard))
