@@ -7,10 +7,13 @@ import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
 import myCars from './reducers/myCars'
 import cars from './reducers/cars'
+import reviews from './reducers/reviews'
 import signupCarForm from './reducers/signupCarForm'
 import createReservationForm from './reducers/createReservationForm'
 import myReservations from './reducers/myReservations'
 import myBookings from './reducers/myBookings'
+import createReviewForm from './reducers/createReviewForm'
+
 
 
 
@@ -25,6 +28,8 @@ const reducers = combineReducers({
   createReservationForm,
   myReservations,
   myBookings,
+  createReviewForm,
+  reviews,
   cars
 })
 
