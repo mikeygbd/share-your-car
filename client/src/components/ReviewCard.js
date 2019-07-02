@@ -15,13 +15,16 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
+import StarRatingComponent from 'react-star-rating-component';
+
 
 const useStyles = makeStyles(theme => ({
   card: {
     backgroundColor: grey[400],
-    width: 345,
-    margin: 20,
+    width: 295,
+    margin: 10,
   },
   cardHeader: {
     textAlign: 'left',
@@ -47,29 +50,54 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const ReviewCard = ({ review }) => {
-  const classes = useStyles()
+const ReviewCard = ({ review, currentUser }) => {
 
+  const classes = useStyles()
+  const fullName = `${review.customer.firstname} ${review.customer.lastname}`
 
 
   return (
 
     <Card id="car-card" className={classes.card} >
-          <CardHeader>
-          <Avatar aria-label="Owner Img" className={classes.avatar} image={review.user.img}>
-            <img className="owner-img" src={review.user.img} alt="Profile Pic"/>
+      <CardHeader className={classes.cardHeader}
+        avatar={
+          <Avatar aria-label="Owner Img" className={classes.avatar} image={review.customer.img}>
+            <img className="owner-img" src={review.customer.img} alt="Profile Pic"/>
           </Avatar>
-            {review.user.firstname} {review.user.lastname}
-          </CardHeader>
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {review.content}
-        </Typography>
-      </CardContent>
+        }
+        action={
+          <IconButton >
+          <Avatar aria-label="Settings" className={classes.avatar} image={review.car.img}>
+            <img className="car-thumbnail" src={review.car.img} alt="Car Pic"/>
+          </Avatar>
+        </IconButton>
+       }
+       title={fullName}
+       subheader={
+         <>
+         <StarRatingComponent
+             name="rate2"
+             editing={false}
+             starCount={5}
+             value={review.rating}
+           />
+           <Typography variant="body2" color="textSecondary" component="p">
+             {review.content}
+           </Typography>
+           </>
+       }
+       />
     </Card>
-
-
   )
 }
 
-export default ReviewCard
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser,
+
+
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(ReviewCard))
