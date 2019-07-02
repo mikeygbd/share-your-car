@@ -21,6 +21,9 @@ import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { connect } from 'react-redux'
 import '../styles/car.css'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
+import ReviewCard from './ReviewCard'
+import StarRatingComponent from 'react-star-rating-component';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -55,8 +58,22 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, car, currentUser }) => {
+const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, car, reviews, currentUser }) => {
   const classes = useStyles()
+
+  var filteredArray = reviews.filter(function( review ) {
+    return review.car.id === car.id});
+    var totalRating = 0;
+    var ratings = []
+    filteredArray.forEach(avrgRating)
+    function avrgRating(review) {
+      ratings.push(review.rating)
+      totalRating += review.rating;
+    }
+    var avg = totalRating / ratings.length;
+  const reviewCards = filteredArray.length > 0 ? filteredArray.map((rw) =>  <ReviewCard review={rw} key={rw.id}/>) : null
+
+  const delete_url = `/cars/${car.id}/destroy`
 
   const [expanded, setExpanded] = React.useState(false)
   const title = `${car.make} ${car.model}`
@@ -83,6 +100,10 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 
     updateCreateReservationForm(updatedFormInfo)
     history.push('/create_reservation')
+  }
+
+  const handleReviewsClick = (e) => {
+
 
   }
 
@@ -101,7 +122,19 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
          </IconButton>
        }
        title={title}
-       subheader={car.year}/>
+       subheader={
+          <>
+         {car.year}
+         <StarRatingComponent
+             name="rate2"
+             editing={false}
+             starCount={5}
+             value={avg}
+           />
+
+         </>
+       }
+       />
         <CardMedia
           className={classes.media}
           image={car.img}
@@ -114,14 +147,20 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="Add to favorites">
+
           {currentUser && (car.owner.email === currentUser.email) ?
+
             <DeleteOutlinedIcon  />
 
+
              :
+
              <FavoriteIcon />
 
             }
         </IconButton>
+
+
 
         {currentUser && (car.owner.email === currentUser.email) ?
           <Button label='MyCars' color="primary" to='/my_cars' component={Link}  aria-label="Share">
@@ -131,6 +170,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
         <Button onClick={handleSubmit}  aria-label="Share">
           Reserve
         </Button>}
+
 
         <IconButton
        className={clsx(classes.expand, {
@@ -145,15 +185,28 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
+
           <Typography>
-          Car Milage: {car.milage}<br />
-        Daily Rate: ${car.daily_rate}<br />
-      Weekly Rate: ${car.weekly_rate}<br />
+    Daily Rate: ${car.daily_rate}<br />
+    Weekly Rate: ${car.weekly_rate}<br />
     Monthly Rate: ${car.monthly_rate}<br />
           </Typography>
+          <div className="reviews-btn">
+          {reviewCards ?
+          <Button label='See Reviews' color="primary" onClick={handleReviewsClick} aria-label="Share">
+            See Reviews
+          </Button> : null }
+            <div>
+              {reviewCards}
+            </div>
+
+          </div>
+
+
         </CardContent>
     </Collapse>
     </Card>
+
 
 
   )
@@ -162,9 +215,10 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    createReservationFormData: state.createReservationForm
+    createReservationFormData: state.createReservationForm,
+    reviews: state.reviews
 
   }
 }
 
-export default withRouter(connect(mapStateToProps, { updateCreateReservationForm})(CarCard))
+export default withRouter(connect(mapStateToProps, { updateCreateReservationForm })(CarCard))
