@@ -53,7 +53,6 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
           <TextField
           name="start_time"
           type="time"
-          placeholder="Start Time (12:30)"
           onChange={handleChange}
           value={createReservationFormData.start_time}
           required
@@ -71,7 +70,6 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
           <TextField
           name="end_time"
           type="time"
-          placeholder="Return Time (12:30)"
           onChange={handleChange}
           value={createReservationFormData.end_time}
           required
