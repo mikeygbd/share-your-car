@@ -6,8 +6,9 @@ class Reservation < ApplicationRecord
   has_many :reviews
 
  # validates :start_date, :end_date, :overlap => {:message_title => [:start_at, :end_at], :message_content => "Some validation message"}
-
-
+ # validates :starts_at, :ends_at, :overlap => true
+ # validates :start_date, :end_date, overlap: { scope: 'customer_id',
+ #                                              message_content: 'overlaps with customers other reservation.' }
 
  # validate :no_overlap
  #
