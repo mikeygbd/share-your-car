@@ -64,7 +64,7 @@ let monthNames = [
   "Nov", "Dec"
 ];
 
-let day = d.getDate()
+let day = d.getDate() + 1
 let monthIndex = d.getMonth()
 let year = d.getFullYear()
 let time = d.getTime()
