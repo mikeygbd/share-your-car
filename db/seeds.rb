@@ -36,5 +36,8 @@ bmw = Car.third
 mini = Car.fourth
 mustang = Car.fifth
 
-mike_bmw = bmw.reservations.create!(customer_id: 1, owner_id: 2, start_date: "2019-7-12 01:38:54", end_date: "2019-7-15 01:38:54.840" )
-mike.reviews.create(content: "This Car was very fast and fun", car: bmw)
+mike_bmw = bmw.reservations.create!(customer_id: 1, owner_id: 2, start_date: "2019-7-12", start_time: "01:38:54", end_time: "01:40:00", end_date: "2019-7-15" )
+ryan_tesla = tesla.reservations.create!(customer_id: 2, owner_id: 1, start_date: "2019-2-12", start_time: "01:38:54", end_time: "01:40:00", end_date: "2019-2-15" )
+
+mike_bmw.reviews.create(customer_id: 1, car_id: 3, reservation_id: 1, rating: 5, content: "This Car was very fast and fun")
+ryan_tesla.reviews.create(customer_id: 2, car_id: 2, reservation_id: 2, rating: 4, content: "This Car was great on my trip up to vermont. It did great in the snow but i did recieve it with only half of a tank of gas.")
