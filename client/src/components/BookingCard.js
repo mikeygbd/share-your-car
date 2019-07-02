@@ -124,7 +124,6 @@ return monthNames[monthIndex] + '/' + day + '/' + year
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
-            {booking.reviews[0]}
             Start Date: {resDate(booking.start_date)}<br />
           Start Time: {resDate(booking.start_time)}<br />
           Return Date: {resDate(booking.end_date)}<br />
