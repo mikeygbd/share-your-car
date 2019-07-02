@@ -18,6 +18,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'foreman', '~> 0.82.0'
 gem 'thor', '~> 0.19.1'
 gem 'active_model_serializers'
+gem 'validates_overlap'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
