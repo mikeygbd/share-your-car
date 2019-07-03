@@ -23,7 +23,7 @@ import '../styles/car.css'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
 import ReviewCard from './ReviewCard'
 import StarRatingComponent from 'react-star-rating-component';
-
+// import {deleteCar} from '../actions/myCars';
 
 
 const useStyles = makeStyles(theme => ({
@@ -52,13 +52,19 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: 'white'[500],
   },
+  iconHover: {
+    margin: theme.spacing(2),
+    '&:hover': {
+      color: "red",
+    },
+  },
 
 }))
 
 
 
 
-const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, car, reviews, currentUser }) => {
+const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, myCars, car, deleteCar, reviews, currentUser }) => {
   const classes = useStyles()
 
   var filteredArray = reviews.filter(function( review ) {
@@ -107,6 +113,13 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 
   }
 
+  // const handleDelete = (e) => {
+  //   deleteCar(car.id)
+  //
+  // }
+
+
+
   return (
 
     <Card id="car-card" className={classes.card} >
@@ -147,19 +160,19 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="Add to favorites">
 
           {currentUser && (car.owner.email === currentUser.email) ?
-
-            <DeleteOutlinedIcon  />
-
+            <IconButton aria-label="Delete Car" className={classes.iconHover}  to="/my_cars" onClick={() => {deleteCar(car.id)}} >
+            <DeleteOutlinedIcon    />
+            </IconButton>
 
              :
-
+             <IconButton aria-label="Add to favorites" className={classes.iconHover}  >
              <FavoriteIcon />
+             </IconButton>
 
             }
-        </IconButton>
+
 
 
 
@@ -217,7 +230,8 @@ const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
     createReservationFormData: state.createReservationForm,
-    reviews: state.reviews
+    reviews: state.reviews,
+    myCars: state.myCars
 
   }
 }
