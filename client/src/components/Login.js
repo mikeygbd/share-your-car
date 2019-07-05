@@ -52,7 +52,9 @@ const Login = ({ history, loginForm, updateLoginForm, login }) => {
     <div className="Login">
     <div className="UserForm">
       <div className="UserForm-title">
+
       <Toolbar>Log in</Toolbar>
+
       </div>
     <form id="multi-form" onSubmit={handleSubmit}>
       <TextField
