@@ -12,11 +12,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { grey } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
-import ReviewCard from './ReviewCard';
 import Button from '@material-ui/core/Button';
 
 
@@ -63,7 +61,6 @@ let monthNames = [
 let day = d.getDate()
 let monthIndex = d.getMonth()
 let year = d.getFullYear()
-let time = d.getTime()
 
 
 return monthNames[monthIndex] + '/' + day + '/' + year
