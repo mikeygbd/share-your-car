@@ -32,8 +32,9 @@
 
   padding-bottom: 1%;
   color: rgb(234 234 234);
-  background-color: rgba(0,0,0,0.5) !important;
-  border-radius: 12px;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px #000000;
 }
 .profile-panels {
 float: left;
@@ -66,20 +67,28 @@ float: left;
 
 }
 .UserForm-title-mc {
-  background-color: rgb(64 84 178);
+  background-color: #333;
   color: white;
-  padding-left: 25%;
-  padding-right: 25%;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  padding-left: 26%;
+  padding-right: 26%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 
 }
 .UserForm-title-mc1 {
-  background-color: rgb(64 84 178);
+  background-color: #333;
   color: white;
   padding-left: 35%;
   padding-right: 35%;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.UserForm-title-mc2 {
+  background-color: #333;
+  color: white;
+  padding-left: 27%;
+  padding-right: 27%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 
 }
