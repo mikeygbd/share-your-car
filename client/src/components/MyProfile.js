@@ -1,23 +1,16 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
+import Avatar from '@material-ui/core/Avatar';
+import CardHeader from '@material-ui/core/CardHeader';
+
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { grey } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { connect } from 'react-redux'
 import CarCard from './CarCard'
 import BookingCard from './BookingCard'
@@ -28,11 +21,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    width: 1200,
+    backgroundColor: "#ccc",
   },
   media: {
-    height: 140,
+    height: 350,
   },
+  share: {
+    marginLeft: 515,
+  },
+  avatar: {
+    width: 200,
+    height: 200,
+
+    backgroundColor: 'white',
+    marginTop: 30,
+    marginLeft: 490,
+  },
+
 });
 
 const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
@@ -47,12 +53,14 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
     <div className="user-profile">
     <div className="user-card">
     <Card className={classes.card}>
-      <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={currentUser.img}
-          title="Contemplative Reptile"
-        />
+          image="https://wallpaperaccess.com/full/124088.jpg"
+          />
+
+        <Avatar aria-label="Owner Img" className={classes.avatar} image={currentUser.img}>
+          <img className="profile-img"  src={currentUser.img} alt="Profile Pic"/>
+        </Avatar>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {currentUser.firstname} {currentUser.lastname}
@@ -61,15 +69,12 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
             {currentUser.hometown.city}, {currentUser.hometown.state}<br />
             {currentUser.hometown.country}
           </Typography>
+          <CardActions>
+            <Button className={classes.share} label='CarForm'  to='/car_form' component={Link}  size="small" variant="contained" color="secondary">
+              Share Your Car
+            </Button>
+          </CardActions>
         </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button label='CarForm'  to='/car_form' component={Link}  size="small" color="primary">
-          Share Your Car
-        </Button>
-      </CardActions>
-    </Card>
-    </div>
 
     <div>
     <div className="UserForm-mc profile-panels">
@@ -79,21 +84,26 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
     {carCards}
     </div>
 
+    {bookingCards ?
     <div className="UserForm-mc profile-panels">
-    <div className="UserForm-title-mc">
+    <div className="UserForm-title-mc2">
       <Toolbar>My Bookings</Toolbar>
     </div>
-    {bookingCards ? bookingCards : <h3>No Bookings At This Time</h3>}
-    </div>
-
+    {bookingCards}
+  </div> : null}
+    {reservationCards ?
     <div className="UserForm-mc profile-panels">
-    <div className="UserForm-title-mc">
+     <div className="UserForm-title-mc">
       <Toolbar>My Reservations</Toolbar>
     </div>
     {reservationCards}
+    </div>: null}
+  </div>
+
+  </Card>
+  </div>
     </div>
-    </div>
-    </div>
+
 
   )
 
