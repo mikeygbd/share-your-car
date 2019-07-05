@@ -7,20 +7,21 @@ import PropTypes from 'prop-types'
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { connect } from 'react-redux'
-import navCss from '../styles/navbar.css'
+import  '../styles/navbar.css'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import logo from '../images/white_transparent.png';
+
+
 
 function TabContainer(props) {
   return (
@@ -53,6 +54,11 @@ const useStyles = makeStyles(theme => ({
   },
   grow: {
     flexGrow: 1,
+
+  },
+  background: {
+    backgroundColor: "#333",
+
   },
   textField: {
   marginLeft: theme.spacing(1),
@@ -66,6 +72,7 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+
     },
   },
   search: {
@@ -107,6 +114,7 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
+
     },
   },
   sectionMobile: {
@@ -149,14 +157,7 @@ const NavBar = ({ currentUser }) => {
    setMobileMoreAnchorEl(event.currentTarget);
  }
 
- function handleSignupClick(e) {
-   e.preventDefault()
 
-   const url = (window.location.href + 'signup')
-   return(
-     window.location.href = url
-   )
- }
 
  function handleChange(event, newValue) {
    setValue(newValue);
@@ -223,7 +224,7 @@ const NavBar = ({ currentUser }) => {
   return (
     <div className={classes.grow}>
       <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.background} position="static">
         <Toolbar>
           <IconButton
             edge="start"
@@ -244,13 +245,13 @@ const NavBar = ({ currentUser }) => {
             {!currentUser ? <div className="navbar-space"></div> : null}
           <Tabs variant="fullWidth" value={value} onChange={handleChange}>
 
-            <Tab centered='true' label='Home'  to='/' component={Link} />
-            { currentUser ? <Tab centered='true' label='My Cars'  to='/my_cars' component={Link} /> : null}
+            <Tab centered='true' label='About'  to='/about' component={Link} />
             <Tab centered='true' label='Cars'  to='/cars' component={Link} />
-            { currentUser ? <Tab centered='true' label='Profile'  to='/my_profile' component={Link} /> : null}
+            <Tab centered='true' label={<img src={logo} width="60" alt="Logo"/>}  to='/' component={Link} />
+            { currentUser ? <Tab centered='true' label='My Cars'  to='/my_cars' component={Link} /> : null}
             { currentUser ? <Tab centered='true' label='Logout'  to='/logout' component={Link} /> : <Tab centered='true' label='Login'  to='/login' component={Link} />}
             { currentUser ? null : <Tab centered='true' label='Sign Up'  to='/signup' component={Link} />}
-
+            { currentUser ? <Tab className="Account-Circle" centered='true' label={<AccountCircle/>} to='/my_profile' component={Link}/> : null}
           </Tabs>
           </div>
 
@@ -265,7 +266,7 @@ const NavBar = ({ currentUser }) => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
