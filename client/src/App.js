@@ -5,7 +5,7 @@ import { getCurrentUser } from './actions/currentUser'
 import { getCars } from './actions/cars'
 import { getReviews } from './actions/reviews'
 import NavBar from './components/NavBar'
-import { Switch, Route, NavLink, Link, withRouter } from 'react-router-dom';
+import { Switch, Route, } from 'react-router-dom';
 import MyCars from './components/MyCars'
 import Cars from './components/Cars'
 import Login from './components/Login'
@@ -18,6 +18,7 @@ import CarForm from './components/CarForm';
 import ReservationForm from './components/ReservationForm';
 import ReviewForm from './components/ReviewForm';
 import Reviews from './components/Reviews'
+import About from './components/About'
 
 
 
@@ -37,6 +38,7 @@ class App extends React.Component {
     <div className="App">
     <NavBar/>
       <Switch>
+        <Route exact path='/about' render={props => <About {...props} />}  />
         <Route exact path='/my_cars' render={props => <MyCars {...props} />}  />
         <Route exact path='/create_reservation' render={props => <ReservationForm {...props} />}  />
         <Route exact path='/create_review' render={props => <ReviewForm {...props} />}  />
