@@ -12,11 +12,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { grey } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Link, withRouter } from 'react-router-dom';
-import ReviewCard from './ReviewCard';
+import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { updateCreateReviewForm } from '../actions/createReviewForm'
 import { connect } from 'react-redux'
@@ -67,7 +65,6 @@ let monthNames = [
 let day = d.getDate() + 1
 let monthIndex = d.getMonth()
 let year = d.getFullYear()
-let time = d.getTime()
 
 
 return monthNames[monthIndex] + '/' + day + '/' + year

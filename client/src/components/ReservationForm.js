@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { connect } from 'react-redux';
 import { createReservation } from '../actions/myReservations'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
-import { Link, Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 const ReservationForm = ({ history, createReservationFormData, updateCreateReservationForm, createReservation}) => {

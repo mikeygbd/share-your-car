@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { connect } from 'react-redux';
 import { createReview } from '../actions/reviews'
 import { updateCreateReviewForm } from '../actions/createReviewForm'
-import { Link, Route, withRouter } from 'react-router-dom';
+import {withRouter } from 'react-router-dom';
 import Rating from './Rating';
 
 

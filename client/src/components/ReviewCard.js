@@ -1,21 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { grey } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -23,7 +14,7 @@ import StarRatingComponent from 'react-star-rating-component';
 const useStyles = makeStyles(theme => ({
   card: {
     backgroundColor: grey[400],
-    width: 295,
+    width: "94%",
     margin: 10,
   },
   cardHeader: {
@@ -65,13 +56,6 @@ const ReviewCard = ({ review, currentUser }) => {
             <img className="owner-img" src={review.customer.img} alt="Profile Pic"/>
           </Avatar>
         }
-        action={
-          <IconButton >
-          <Avatar aria-label="Settings" className={classes.avatar} image={review.car.img}>
-            <img className="car-thumbnail" src={review.car.img} alt="Car Pic"/>
-          </Avatar>
-        </IconButton>
-       }
        title={fullName}
        subheader={
          <>

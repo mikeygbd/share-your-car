@@ -1,9 +1,7 @@
 import React from 'react'
-import ReviewCard from './ReviewCard'
 import CarCard from './CarCard'
 
 import { connect } from 'react-redux'
-import Rating from './Rating'
 
 
 const Reviews = ({ reviews}) => {

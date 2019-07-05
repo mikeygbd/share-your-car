@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import StarRatingComponent from 'react-star-rating-component';
 
 class Rating extends React.Component {
@@ -20,7 +19,7 @@ class Rating extends React.Component {
 
     return (
       <div>
-        
+
         <StarRatingComponent
           name="rate1"
           starCount={5}
