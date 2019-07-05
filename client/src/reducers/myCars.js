@@ -6,6 +6,8 @@ export default (state = [], action) => {
     return []
     case "SET_NEW_MY_CAR":
     return [...state, action.car]
+    case "DELETE_MY_CAR":
+    return [state.destroy(action.car) ]
     default:
     return state
   }
