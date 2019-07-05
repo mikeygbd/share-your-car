@@ -6,13 +6,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
+
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { grey } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link, withRouter } from 'react-router-dom';
@@ -79,7 +80,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
     var avg = totalRating / ratings.length;
   const reviewCards = filteredArray.length > 0 ? filteredArray.map((rw) =>  <ReviewCard review={rw} key={rw.id}/>) : null
 
-  const delete_url = `/cars/${car.id}/destroy`
+  // const delete_url = `/cars/${car.id}/destroy`
 
   const [expanded, setExpanded] = React.useState(false)
   const title = `${car.make} ${car.model}`
@@ -149,11 +150,13 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
          </div>
        }
        />
+       <CardActionArea >
         <CardMedia
           className={classes.media}
           image={car.img}
           title= {title}
           />
+        </CardActionArea>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {car.description}
@@ -162,7 +165,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       <CardActions disableSpacing>
 
           {currentUser && (car.owner.email === currentUser.email) ?
-            <IconButton aria-label="Delete Car" className={classes.iconHover}  to="/my_cars" onClick={() => {deleteCar(car.id)}} >
+            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={() => {deleteCar(car.id)}} >
             <DeleteOutlinedIcon    />
             </IconButton>
 
@@ -213,10 +216,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
             <div>
               {reviewCards}
             </div>
-
           </div>
-
-
         </CardContent>
     </Collapse>
     </Card>
