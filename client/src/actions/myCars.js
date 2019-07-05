@@ -84,7 +84,7 @@ export const signupCar = carInfo => {
 
 export const deleteOwnerCar = (id) => {
   return dispatch => {
-
+    console.log(id)
     return fetch(`http://localhost:3001/api/cars/${id}/destroy`, {
       credentials: "include",
       method: "DELETE",
