@@ -28,6 +28,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
   }
 
     return (
+      <div className="CarForm" >
     <div className="UserForm">
 
         <div className="UserForm-title">
@@ -124,6 +125,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
 
 
     </form>
+</div>
 </div>
     )
   }
