@@ -173,3 +173,12 @@ background-color: rgba(0,0,0,0.5) !important;
 .about-msg {
   color: white;
 }
+
+.CarForm {
+    padding-top: 2%;
+  background-image: url('https://wpmisc.com/sites/default/files/wallpaper/vehicles/76426/range-rover-sport-hd-wallpapers-76426-6485099.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 110vh;
+
+}
