@@ -243,7 +243,7 @@ const NavBar = ({ currentUser }) => {
           </div>
           <div className="tabs">
             {!currentUser ? <div className="navbar-space"></div> : null}
-          <Tabs variant="fullWidth" value={value} onChange={handleChange}>
+          <Tabs variant="fullWidth" indicatorColor="primary" value={value} onChange={handleChange}>
 
             <Tab centered='true' label='About'  to='/about' component={Link} />
             <Tab centered='true' label='Cars'  to='/cars' component={Link} />
