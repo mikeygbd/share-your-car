@@ -29,6 +29,8 @@ const useStyles = makeStyles({
   },
   share: {
     marginLeft: 515,
+    // backgroundColor: "rgb(33 120 207)",
+    // color: "#eee",
   },
   avatar: {
     width: 200,
@@ -70,7 +72,7 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
             {currentUser.hometown.country}
           </Typography>
           <CardActions>
-            <Button className={classes.share} label='CarForm'  to='/car_form' component={Link}  size="small" variant="contained" color="secondary">
+            <Button className={classes.share} label='CarForm'  to='/car_form' component={Link}  size="small" variant="contained" color="primary">
               Share Your Car
             </Button>
           </CardActions>
