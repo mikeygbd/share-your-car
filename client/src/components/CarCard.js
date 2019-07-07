@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -68,6 +68,8 @@ const useStyles = makeStyles(theme => ({
 const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, myCars, car, deleteCar, reviews, currentUser }) => {
   const classes = useStyles()
 
+  const [showReviews, setShowReviews] = useState(false)
+
   var filteredArray = reviews.filter(function( review ) {
     return review.car.id === car.id});
     var totalRating = 0;
@@ -109,8 +111,11 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
     history.push('/create_reservation')
   }
 
-  const handleReviewsClick = (e) => {
 
+  const toggleReviews = (e) => {
+      setShowReviews(prevShowReviews =>
+       !prevShowReviews
+    )
 
   }
 
@@ -210,12 +215,13 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
           </Typography>
           <div className="reviews-btn">
           {reviewCards ?
-          <Button label='See Reviews' color="primary" onClick={handleReviewsClick} aria-label="Share">
-            See Reviews
+          <Button color="primary" onClick={toggleReviews} aria-label="Share">
+            {showReviews ? "Hide Reviews" : "Show Reviews" }
           </Button> : null }
+          { showReviews ?
             <div>
-              {reviewCards}
-            </div>
+               {reviewCards}
+            </div>  : null}
           </div>
         </CardContent>
     </Collapse>
