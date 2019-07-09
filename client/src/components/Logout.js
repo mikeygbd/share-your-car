@@ -4,14 +4,17 @@ import { logout } from '../actions/currentUser'
 import Button from '@material-ui/core/Button';
 import '../styles/registration.css'
 import Toolbar from '@material-ui/core/Toolbar';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const Logout = ({ history, logout }) => {
+
     const handleSubmit = event => {
 
     event.preventDefault()
+
     logout()
-    history.push('/')
+  history.push('/')
+
   }
 
 
@@ -21,9 +24,9 @@ const Logout = ({ history, logout }) => {
     <div className="UserForm-title">
       <Toolbar>Are You Sure You Want To Log Out?</Toolbar>
     </div>
-    <form className="logout-form" onSubmit={logout}>
+    <form className="logout-form" onSubmit={handleSubmit}>
       <div className="logout-btn">
-        <Button  variant="contained" size="small" color="primary" type="submit" onSubmit={handleSubmit} >
+        <Button  variant="contained" size="small" color="primary" type="submit"  >
            Logout
         </Button>
       </div>
