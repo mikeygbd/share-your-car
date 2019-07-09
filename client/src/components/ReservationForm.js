@@ -82,7 +82,7 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
         variant="contained"
         color="primary"
         onClick={handleSubmit}
-        >Sign Up</Button>
+        >Reserve</Button>
 
         </div>
 
