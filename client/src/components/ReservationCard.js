@@ -67,8 +67,24 @@ let monthIndex = d.getMonth()
 let year = d.getFullYear()
 
 
-return monthNames[monthIndex] + '/' + day + '/' + year
+return monthIndex + '/' + day + '/' + year
 }
+
+function parseDate(str) {
+    var mdy = str.split('/');
+    return new Date(mdy[2], mdy[0]-1, mdy[1]);
+}
+
+function datediff(first, second) {
+    // Take the difference between the dates and divide by milliseconds per day.
+    // Round to nearest whole number to deal with DST.
+    return Math.round((second-first)/(1000*60*60*24));
+}
+  const totalDuration = datediff(parseDate(resDate(reservation.start_date)), parseDate(resDate(reservation.end_date)))
+  const totalTime = datediff(parseDate(resDate(reservation.start_time)), parseDate(resDate(reservation.end_time)))
+
+// alert(datediff(parseDate(first.value), parseDate(second.value)));
+
 
   const classes = useStyles()
 
@@ -148,16 +164,18 @@ return monthNames[monthIndex] + '/' + day + '/' + year
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography>
-            Start Date: {resDate(reservation.start_date)}<br />
-          Start Time: {reservation.start_time}<br />
-          Return Date: {resDate(reservation.end_date)}<br />
-        Return Time: {reservation.end_time}<br />
+          <Typography className="reservation-info">
 
-
-        Daily Rate: ${reservation.car.daily_rate}<br />
-      Weekly Rate: ${reservation.car.weekly_rate}<br />
-    Monthly Rate: ${reservation.car.monthly_rate}<br />
+              <strong>Start Date:</strong> {resDate(reservation.start_date)}<br />
+              <strong>Start Time:</strong> {reservation.start_time}<br />
+              <strong>Return Date:</strong> {resDate(reservation.end_date)}<br />
+              <strong>Return Time:</strong> {reservation.end_time}<br />
+              <strong>Total Duration:</strong> {totalDuration} Days. <br />
+              <strong>Total Price:</strong> ${totalDuration * reservation.car.daily_rate}<br />
+              <strong>Daily Rate:</strong> ${reservation.car.daily_rate}<br />
+              <strong>Weekly Rate:</strong> ${reservation.car.weekly_rate}<br />
+              <strong>Monthly Rate:</strong> ${reservation.car.monthly_rate}<br />
+              {totalTime}<br />
 
           </Typography>
         </CardContent>
