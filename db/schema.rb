@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2019_06_29_224611) do
     t.string "car_type"
     t.integer "total_passengers"
     t.float "daily_rate"
-    t.float "weekly_rate"
-    t.float "monthly_rate"
+    t.float "weekly_discount"
+    t.float "monthly_discount"
     t.integer "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

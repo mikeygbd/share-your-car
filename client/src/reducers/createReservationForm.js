@@ -10,8 +10,8 @@ const initialState = {
       model: "",
       year: "",
       daily_rate: "",
-      weekly_rate: "",
-      monthly_rate: "",
+      weekly_discount: "",
+      monthly_discount: "",
       img: "",
       description: ""
     }

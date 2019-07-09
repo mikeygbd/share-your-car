@@ -12,8 +12,8 @@ class CreateCars < ActiveRecord::Migration[5.2]
       t.string :type
       t.integer :total_passengers
       t.float :daily_rate
-      t.float :weekly_rate
-      t.float :monthly_rate
+      t.float :weekly_discount
+      t.float :monthly_discount
       t.integer :discount
       t.timestamps
     end

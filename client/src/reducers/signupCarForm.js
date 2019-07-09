@@ -4,9 +4,9 @@ const initialState = {
   model: "",
   year: "",
   daily_rate: "",
-  weekly_rate: "",
+  weekly_discount: "",
   description: "",
-  monthly_rate: "",
+  monthly_discount: "",
   img: ""
 
 }
