@@ -128,8 +128,8 @@ return monthNames[monthIndex] + '/' + day + '/' + year
 
 
         Daily Rate: ${booking.car.daily_rate}<br />
-      Weekly Rate: ${booking.car.weekly_rate}<br />
-    Monthly Rate: ${booking.car.monthly_rate}<br />
+      Weekly Discount: ${booking.car.weekly_discount}<br />
+    Monthly Discount: ${booking.car.monthly_discount}<br />
 
           </Typography>
         </CardContent>
