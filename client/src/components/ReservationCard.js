@@ -81,8 +81,17 @@ function datediff(first, second) {
     return Math.round((second-first)/(1000*60*60*24));
 }
   const totalDuration = datediff(parseDate(resDate(reservation.start_date)), parseDate(resDate(reservation.end_date)))
-
 // alert(datediff(parseDate(first.value), parseDate(second.value)));
+    const totalPrice = (totalDuration * reservation.car.daily_rate)
+    function percentage(num, per)
+    {
+    return (num/100)*per;
+    }
+
+    const totalWeeklyDiscount = percentage(totalPrice, reservation.car.weekly_discount)
+    const totalMonthlyDiscount = percentage(totalPrice, reservation.car.Monthly_discount)
+    const totalAfterWeeklyDiscount = totalPrice - totalWeeklyDiscount
+    const totalAfterMothlyDiscount = totalPrice - totalMonthlyDiscount
 
 
   const classes = useStyles()
@@ -104,8 +113,8 @@ function datediff(first, second) {
           year: reservation.car.year,
           img: reservation.car.img,
           daily_rate: reservation.car.daily_rate,
-          weekly_rate: reservation.car.weekly_rate,
-          monthly_rate: reservation.car.monthly_rate,
+          weekly_discount: reservation.car.weekly_discount,
+          monthly_discount: reservation.car.monthly_discount,
           description: reservation.car.description
       },
       reservation_id: reservation.id,
@@ -169,13 +178,11 @@ function datediff(first, second) {
               <strong>Start Time:</strong> {reservation.start_time}<br />
               <strong>Return Date:</strong> {resDate(reservation.end_date)}<br />
               <strong>Return Time:</strong> {reservation.end_time}<br />
-              <strong>Total Duration:</strong> {totalDuration} Days. <br />
-              <strong>Total Price:</strong> ${totalDuration * reservation.car.daily_rate}<br />
+              <strong>Total Duration:</strong> {totalDuration} Days <br />
               <strong>Daily Rate:</strong> ${reservation.car.daily_rate}<br />
-              <strong>Weekly Rate:</strong> ${reservation.car.weekly_rate}<br />
-              <strong>Monthly Rate:</strong> ${reservation.car.monthly_rate}<br />
-
-
+              <strong>Total Price:</strong> ${totalPrice} <br />
+               {(totalDuration > 7 )? <><strong>Weekly Discount Applied:</strong> {reservation.car.weekly_discount}%<br /><strong>Total Discounted Price:</strong><>${totalAfterWeeklyDiscount}</><br /></> : null }
+               {(totalDuration > 30 )? <><strong>Monthly Discount Applied:</strong> {reservation.car.monthly_discount}%<br /><strong>Total Discounted Price:</strong><>${totalAfterMothlyDiscount}</><br /></> : null }
           </Typography>
         </CardContent>
     </Collapse>
