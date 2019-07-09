@@ -19,6 +19,8 @@ import ReservationForm from './components/ReservationForm';
 import ReviewForm from './components/ReviewForm';
 import Reviews from './components/Reviews'
 import About from './components/About'
+import Car from './components/Car'
+
 
 
 
@@ -38,6 +40,7 @@ class App extends React.Component {
     <div className="App">
     <NavBar/>
       <Switch>
+        <Route exact path='/cars/:id' render={props => <Car {...props} />}  />
         <Route exact path='/about' render={props => <About {...props} />}  />
         <Route exact path='/my_cars' render={props => <MyCars {...props} />}  />
         <Route exact path='/create_reservation' render={props => <ReservationForm {...props} />}  />
