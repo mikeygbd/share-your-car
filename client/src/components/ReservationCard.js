@@ -63,7 +63,7 @@ let monthNames = [
 ];
 
 let day = d.getDate() + 1
-let monthIndex = d.getMonth()
+let monthIndex = d.getMonth() + 1
 let year = d.getFullYear()
 
 
@@ -81,7 +81,6 @@ function datediff(first, second) {
     return Math.round((second-first)/(1000*60*60*24));
 }
   const totalDuration = datediff(parseDate(resDate(reservation.start_date)), parseDate(resDate(reservation.end_date)))
-  const totalTime = datediff(parseDate(resDate(reservation.start_time)), parseDate(resDate(reservation.end_time)))
 
 // alert(datediff(parseDate(first.value), parseDate(second.value)));
 
@@ -175,7 +174,7 @@ function datediff(first, second) {
               <strong>Daily Rate:</strong> ${reservation.car.daily_rate}<br />
               <strong>Weekly Rate:</strong> ${reservation.car.weekly_rate}<br />
               <strong>Monthly Rate:</strong> ${reservation.car.monthly_rate}<br />
-              {totalTime}<br />
+
 
           </Typography>
         </CardContent>
