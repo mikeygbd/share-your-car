@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   post '/create_review', to: "reviews#create"
   get '/users/:id/reservations', to: "sessions#my_reservations"
   get '/users/:id/bookings', to: "sessions#my_bookings"
-  delete '/cars/:id/destroy', to: "cars#destroy"
+  delete '/cars/:id/destroy', to: 'cars#destroy'
+  get '/cars/:id/destroy', to:'cars#destroy'
 
   resources :users
   resources :cars
