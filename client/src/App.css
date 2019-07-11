@@ -186,3 +186,33 @@ background-color: rgba(0,0,0,0.5) !important;
 .Car {
   background-color: #777;
 }
+.description {
+  float: right;
+}
+.avatar {
+  margin-left: 4%;
+  border-radius: 10px;
+ border: 3px solid rgb(65 87 175);
+}
+
+.carImgContainer{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+
+
+/* Top left text */
+.star-rate {
+  position: absolute;
+  top: 40px;
+  left: 16px;
+}
+
+/* Top right text */
+.daily-rate  {
+  position: absolute;
+  top: 40px;
+  right: -270px;
+}
