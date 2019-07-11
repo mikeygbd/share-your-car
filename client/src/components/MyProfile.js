@@ -59,8 +59,7 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
           className={classes.media}
           image="https://wallpaperaccess.com/full/124088.jpg"
           />
-
-        <Avatar aria-label="Owner Img" className={classes.avatar} image={currentUser.img}>
+        <Avatar aria-label="Owner Img" className={classes.avatar}>
           <img className="profile-img"  src={currentUser.img} alt="Profile Pic"/>
         </Avatar>
         <CardContent>
@@ -85,7 +84,6 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
     </div>
     {carCards}
     </div>
-
     {bookingCards ?
     <div className="UserForm-mc profile-panels">
     <div className="UserForm-title-mc2">
