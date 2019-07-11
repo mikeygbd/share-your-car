@@ -84,20 +84,20 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         />
         <br />
         <TextField
-        name="weekly_rate"
+        name="weekly_discount"
         type="text"
-        placeholder="Weekly Rate"
+        placeholder="Weekly Discount"
         onChange={handleChange}
-        value={signupCarFormData.weekly_rate}
+        value={signupCarFormData.weekly_discount}
 
         />
         <br />
         <TextField
-        name="monthly_rate"
+        name="monthly_discount"
         type="text"
-        placeholder="Monthly Rate"
+        placeholder="Monthly Discount"
         onChange={handleChange}
-        value={signupCarFormData.monthly_rate}
+        value={signupCarFormData.monthly_discount}
 
         />
         <br />
