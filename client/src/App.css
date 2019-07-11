@@ -182,3 +182,7 @@ background-color: rgba(0,0,0,0.5) !important;
   min-height: 110vh;
 
 }
+
+.Car {
+  background-color: #777;
+}
