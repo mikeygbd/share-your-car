@@ -5,11 +5,12 @@ import {deleteOwnerCar} from '../actions/myCars';
 
 const MyCars = ({ myCars, currentUser}) => {
 
-console.log(myCars)
-  const deleteCar = (id) => {
+// console.log(myCars)
+  const deleteOwnerCar = (id) => {
 
-      myCars = myCars.filter(car => {
+       myCars.filter(car => {
        return car.id !== id
+
      })
       console.log(id)
       console.log(myCars)
@@ -19,7 +20,7 @@ console.log(myCars)
 
 
   // renderTodos = () => this.props.todos.map((todo, id) => <Todo delete={this.props.delete} key={id} text={todo} />)
-  let carCards = myCars.length > 0 ? myCars.map(c => <CarCard deleteCar={deleteCar} car={c} key={c.id}/>) : null
+  let carCards = myCars.length > 0 ? myCars.map(c => <CarCard deleteOwnerCar={deleteOwnerCar(c.id)} car={c} key={c.id}/>) : null
 
   return (
     <div className="MyCars">
@@ -39,4 +40,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps)(MyCars)
+export default connect(mapStateToProps, {deleteOwnerCar})(MyCars)
