@@ -1,6 +1,5 @@
 import React from 'react'
 import CarCard from './CarCard'
-
 import { connect } from 'react-redux'
 
 
@@ -10,7 +9,6 @@ const Cars = ({ cars, reviews}) => {
   return (
     <div className="Cars">
      {carCards}
-
      </div>
   )
 }
