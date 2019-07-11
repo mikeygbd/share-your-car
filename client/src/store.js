@@ -14,10 +14,6 @@ import myReservations from './reducers/myReservations'
 import myBookings from './reducers/myBookings'
 import createReviewForm from './reducers/createReviewForm'
 
-
-
-
-
 const reducers = combineReducers({
   users: usersReducer,
   currentUser,
