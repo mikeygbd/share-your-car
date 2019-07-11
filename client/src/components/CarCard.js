@@ -24,11 +24,10 @@ import '../styles/car.css'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
 import ReviewCard from './ReviewCard'
 import Car from './Car'
+import { deleteOwnerCar } from '../actions/myCars'
 
 import StarRatingComponent from 'react-star-rating-component';
-// import {useSelector, useDispatch} from 'react-redux'
-// import {deleteMyCarAction} from '../actions/myCars'
-// import Car from './Car'
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -36,6 +35,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: grey[400],
     width: 345,
     margin: 20,
+  },
+  stars: {
+    paddingTop: 15,
   },
   cardHeader: {
     textAlign: 'left',
@@ -69,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, myCars, car, deleteCar, filterCars, reviews, currentUser }) => {
+const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, myCars, car, deleteCar, filterCars, deleteOwnerCar, reviews, currentUser }) => {
   const classes = useStyles()
   // const deleteMyCar = useActions((carId) => deleteMyCarAction(carId))
    // const dispatch = useDispatch()
@@ -126,10 +128,10 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
   }
 
   const handleDelete = (e) => {
-    deleteCar(car.id)
+
+
 
   }
-
 
   const carLink = `/cars/car_${car.id}`
 
@@ -139,14 +141,22 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 
       <CardHeader className={classes.cardHeader}
         avatar={
-          <Avatar aria-label="Owner Img" className={classes.avatar} image={car.owner.img}>
+          <Avatar aria-label="Owner Img" className="avatar" image={car.owner.img}>
             <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
           </Avatar>
         }
         action={
-         <IconButton aria-label="Settings">
-           <MoreVertIcon />
-         </IconButton>
+
+           <StarRatingComponent
+              className={classes.stars}
+               name="rate2"
+               editing={false}
+               starCount={5}
+               value={avg}
+               size="small"
+               aria-label="Settings"
+             />
+
        }
        title={title}
        subheader={
@@ -154,12 +164,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
           <div className="year">
           {car.year}
           </div>
-         <StarRatingComponent
-             name="rate2"
-             editing={false}
-             starCount={5}
-             value={avg}
-           />
+
          </div>
        }
        />
@@ -176,9 +181,8 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-
           {currentUser && (car.owner.email === currentUser.email) ?
-            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={handleDelete} >
+            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={ (e) => { if (window.confirm('Are you sure you wish to delete this car?')) deleteOwnerCar(car.id)  }} >
             <DeleteOutlinedIcon    />
             </IconButton>
 
@@ -250,4 +254,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { updateCreateReservationForm })(CarCard))
+export default withRouter(connect(mapStateToProps, { updateCreateReservationForm, deleteOwnerCar })(CarCard))
