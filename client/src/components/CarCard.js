@@ -25,6 +25,7 @@ import { updateCreateReservationForm } from '../actions/createReservationForm'
 import ReviewCard from './ReviewCard'
 import Car from './Car'
 import { deleteOwnerCar } from '../actions/myCars'
+import { getMyCars } from '../actions/myCars'
 
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -182,7 +183,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       </CardContent>
       <CardActions disableSpacing>
           {currentUser && (car.owner.email === currentUser.email) ?
-            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={ (e) => { if (window.confirm('Are you sure you wish to delete this car?')) deleteOwnerCar(car.id)  }} >
+            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={ () => { if (window.confirm('Are you sure you wish to delete this car?'))  deleteOwnerCar(car.id) } } >
             <DeleteOutlinedIcon    />
             </IconButton>
 
@@ -254,4 +255,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { updateCreateReservationForm, deleteOwnerCar })(CarCard))
+export default withRouter(connect(mapStateToProps, { updateCreateReservationForm, getMyCars, deleteOwnerCar })(CarCard))
