@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get '/users/:id/bookings', to: "sessions#my_bookings"
   delete '/cars/:id/destroy', to: "cars#destroy"
 
-
   resources :users
   resources :cars
   resources :locations
