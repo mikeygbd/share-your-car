@@ -7,7 +7,10 @@ export default (state = [], action) => {
     case "SET_NEW_MY_CAR":
     return [...state, action.car]
     case "DELETE_MY_CAR":
-    return [state.destroy(action.car) ]
+    return state.filter(car => car.id !== action.payload.id)
+
+    // return [ action.cars.filter(car => car.id !== action.car)]
+
     default:
     return state
   }
