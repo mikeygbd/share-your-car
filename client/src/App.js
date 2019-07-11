@@ -19,7 +19,8 @@ import ReservationForm from './components/ReservationForm';
 import ReviewForm from './components/ReviewForm';
 import Reviews from './components/Reviews'
 import About from './components/About'
-import Car from './components/Car'
+import CarContainer from './components/CarContainer'
+
 
 
 
@@ -40,7 +41,7 @@ class App extends React.Component {
     <div className="App">
     <NavBar/>
       <Switch>
-        <Route exact path='/cars/:id' render={props => <Car {...props} />}  />
+        <Route path="/cars/car_:carId" render={props => <CarContainer {...props} cars={ this.props.cars } currentUser={ this.props.currentUser }/> } />
         <Route exact path='/about' render={props => <About {...props} />}  />
         <Route exact path='/my_cars' render={props => <MyCars {...props} />}  />
         <Route exact path='/create_reservation' render={props => <ReservationForm {...props} />}  />
@@ -64,6 +65,12 @@ class App extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+      cars: state.cars,
+
+    }
+}
 
 
 export default connect(null, {getCurrentUser, getCars, getReviews })(App);
