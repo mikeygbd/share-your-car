@@ -38,8 +38,16 @@ end
 
   # DELETE /cars/1
   def destroy
+    @reservation = Reservation.find_by(car_id: params[:id])
+    @review = Review.find_by(car_id: params[:id])
+    if @reservation && @review
+    @review.destroy
+    @reservation.destroy
+    @car.destroy
+  else
     @car.destroy
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
