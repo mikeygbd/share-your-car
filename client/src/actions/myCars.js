@@ -1,4 +1,4 @@
-import { resetSignupCarForm } from "./signupCarForm"
+ import { resetSignupCarForm } from "./signupCarForm"
 //sync
 export const setMyCars = cars => {
   return {
@@ -21,8 +21,10 @@ const setNewMyCar = car => {
   }
 }
 
-const deleteMyCar = car => {
+export const deleteMyCar = car => {
+
   return {
+
     type: "DELETE_MY_CAR",
     car
   }
@@ -82,10 +84,13 @@ export const signupCar = carInfo => {
   }
 }
 
+
 export const deleteOwnerCar = (id) => {
+  const deleteUrl = `http://localhost:3001/api/cars/${id}/destroy`
+  let data = { "car_id" : id };
   return dispatch => {
     console.log(id)
-    return fetch(`http://localhost:3001/api/cars/${id}/destroy`, {
+    return fetch(deleteUrl, data, {
       credentials: "include",
       method: "DELETE",
       headers: {
@@ -93,12 +98,16 @@ export const deleteOwnerCar = (id) => {
       },
       body: JSON.stringify()
     })
+    console.log("HEllo")
     .then(r => r.json())
     .then(response => {
+      console.log(response)
       if (response.error) {
         alert(response.error)
       } else {
+        console.log(response)
         dispatch(deleteMyCar(response))
+        dispatch(setMyCars(response))
       }
     })
     .catch(console.log)
