@@ -181,8 +181,8 @@ function datediff(first, second) {
               <strong>Total Duration:</strong> {totalDuration} Days <br />
               <strong>Daily Rate:</strong> ${reservation.car.daily_rate}<br />
               <strong>Total Price:</strong> ${totalPrice} <br />
-               {(totalDuration > 7 )? <><strong>Weekly Discount Applied:</strong> {reservation.car.weekly_discount}%<br /><strong>Total Discounted Price:</strong><>${totalAfterWeeklyDiscount}</><br /></> : null }
-               {(totalDuration > 30 )? <><strong>Monthly Discount Applied:</strong> {reservation.car.monthly_discount}%<br /><strong>Total Discounted Price:</strong><>${totalAfterMothlyDiscount}</><br /></> : null }
+               {(totalDuration > 7 )? <><strong>Weekly Discount Applied:</strong> {reservation.car.weekly_discount}%<br /><strong>Savings:</strong> ${totalWeeklyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterWeeklyDiscount}</><br /></> : null }
+               {(totalDuration > 30 )? <><strong>Monthly Discount Applied:</strong> {reservation.car.monthly_discount}%<br /><strong>Savings:</strong> ${totalMonthlyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterMothlyDiscount}</><br /></> : null }
           </Typography>
         </CardContent>
     </Collapse>
