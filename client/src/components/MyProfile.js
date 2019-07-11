@@ -78,12 +78,13 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
         </CardContent>
 
     <div>
+      {carCards ?
     <div className="UserForm-mc profile-panels">
     <div className="UserForm-title-mc1">
       <Toolbar>My Cars</Toolbar>
     </div>
     {carCards}
-    </div>
+    </div> : null}
     {bookingCards ?
     <div className="UserForm-mc profile-panels">
     <div className="UserForm-title-mc2">
