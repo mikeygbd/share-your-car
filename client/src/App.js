@@ -3,6 +3,9 @@ import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser'
 import { getCars } from './actions/cars'
+import { deleteOwnerCar } from './actions/myCars'
+import { getMyCars } from './actions/myCars'
+
 import { getReviews } from './actions/reviews'
 import NavBar from './components/NavBar'
 import { Switch, Route, } from 'react-router-dom';
@@ -31,6 +34,7 @@ class App extends React.Component {
     this.props.getCurrentUser()
     this.props.getReviews()
     this.props.getCars()
+    this.props.getMyCars()
 
   }
 
@@ -73,4 +77,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(null, {getCurrentUser, getCars, getReviews })(App);
+export default connect(null, {getCurrentUser, deleteOwnerCar,getMyCars, getCars, getReviews })(App);
