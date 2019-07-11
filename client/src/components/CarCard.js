@@ -23,8 +23,12 @@ import { connect } from 'react-redux'
 import '../styles/car.css'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
 import ReviewCard from './ReviewCard'
+import Car from './Car'
+
 import StarRatingComponent from 'react-star-rating-component';
-// import {deleteCar} from '../actions/myCars';
+// import {useSelector, useDispatch} from 'react-redux'
+// import {deleteMyCarAction} from '../actions/myCars'
+// import Car from './Car'
 
 
 const useStyles = makeStyles(theme => ({
@@ -65,8 +69,10 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, myCars, car, deleteCar, reviews, currentUser }) => {
+const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, myCars, car, deleteCar, filterCars, reviews, currentUser }) => {
   const classes = useStyles()
+  // const deleteMyCar = useActions((carId) => deleteMyCarAction(carId))
+   // const dispatch = useDispatch()
 
   const [showReviews, setShowReviews] = useState(false)
 
@@ -101,8 +107,8 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
           year: car.year,
           img: car.img,
           daily_rate: car.daily_rate,
-          weekly_rate: car.weekly_rate,
-          monthly_rate: car.monthly_rate,
+          weekly_discount: car.weekly_discount,
+          monthly_discount: car.monthly_discount,
           description: car.description
       }
     }
@@ -119,16 +125,18 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 
   }
 
-  // const handleDelete = (e) => {
-  //   deleteCar(car.id)
-  //
-  // }
+  const handleDelete = (e) => {
+    deleteCar(car.id)
+
+  }
 
 
+  const carLink = `/cars/car_${car.id}`
 
   return (
 
     <Card id="car-card" className={classes.card} >
+
       <CardHeader className={classes.cardHeader}
         avatar={
           <Avatar aria-label="Owner Img" className={classes.avatar} image={car.owner.img}>
@@ -155,7 +163,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
          </div>
        }
        />
-       <CardActionArea >
+     <CardActionArea to={carLink} key={car.id}  component={Link} >
         <CardMedia
           className={classes.media}
           image={car.img}
@@ -170,7 +178,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       <CardActions disableSpacing>
 
           {currentUser && (car.owner.email === currentUser.email) ?
-            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={() => {deleteCar(car.id)}} >
+            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={handleDelete} >
             <DeleteOutlinedIcon    />
             </IconButton>
 
@@ -210,8 +218,8 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 
           <Typography>
     Daily Rate: ${car.daily_rate}<br />
-    Weekly Rate: ${car.weekly_rate}<br />
-    Monthly Rate: ${car.monthly_rate}<br />
+  Weekly Discount: {car.weekly_discount}%<br />
+Monthly Discount: {car.monthly_discount}%<br />
           </Typography>
           <div className="reviews-btn">
           {reviewCards ?
