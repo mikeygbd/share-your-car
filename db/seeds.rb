@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-new_york = Location.create!(city: "New York", state: "NY", country: "United States of America")
-los_angeles = Location.create!(city: "Los Angeles", state: "LA", country: "United States of America")
-san_francisco = Location.create!(city: "San Francisco", state: "SF", country: "United States of America")
+new_york = Location.create!(city: "New York", state: "NY", country: "USA")
+los_angeles = Location.create!(city: "Los Angeles", state: "LA", country: "USA")
+san_francisco = Location.create!(city: "San Francisco", state: "SF", country: "USA")
 
 mike = User.create!(firstname: "Mike", lastname: "Soares", email: "mikey.soares@gmail.com", password: "password", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN6K1Nfp6CdQ9kr3d-oFrL5jmzqcuzTkE-4KqMTs6Q0Hp8BKFx", hometown_id: 1)
 ryan = User.create!(firstname: "Ryan", lastname: "Reece", email: "ryan@gmail.com", password: "password", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbbKLNfYnoSKRtv2wrxGfFL7X2B1y0jwcW7Q5eohbSQiLAHVyE", hometown_id: 2)
