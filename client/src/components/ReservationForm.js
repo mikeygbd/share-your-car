@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { createReservation } from '../actions/myReservations'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
 import { withRouter } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 
 
 const ReservationForm = ({ history, createReservationFormData, updateCreateReservationForm, createReservation}) => {
@@ -34,23 +35,35 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
 
       <div className="Reservation">
     <div className="UserForm">
-
         <div className="UserForm-title">
         <Toolbar>Reservation Details</Toolbar>
         </div>
         <br />
         <form id="multi-form" onSubmit={handleSubmit}>
-
+          <img src={createReservationFormData.car.img} width="276" alt="car"/><br />
         <TextField
+        InputLabelProps={{ shrink: true }}
+        label="Start Date"
         name="start_date"
         type="date"
-        placeholder="Start Date"
         onChange={handleChange}
         value={createReservationFormData.start_date}
         required
         />
         <br />
+        <TextField
+        InputLabelProps={{ shrink: true }}
+        label="Return Date"
+        name="end_date"
+        type="date"
+        onChange={handleChange}
+        value={createReservationFormData.end_date}
+        required
+        />
+        <br />
           <TextField
+          InputLabelProps={{ shrink: true }}
+          label="Start Time"
           name="start_time"
           type="time"
           onChange={handleChange}
@@ -58,16 +71,9 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
           required
           />
         <br />
-        <TextField
-        name="end_date"
-        type="date"
-        placeholder="Return Date"
-        onChange={handleChange}
-        value={createReservationFormData.end_date}
-        required
-        />
-        <br />
           <TextField
+          InputLabelProps={{ shrink: true }}
+          label="Return Time"
           name="end_time"
           type="time"
           onChange={handleChange}
@@ -76,17 +82,13 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
           />
           <br />
         <div className="reg-btn">
-
         <Button
         type="submit"
         variant="contained"
         color="primary"
         onClick={handleSubmit}
         >Reserve</Button>
-
         </div>
-
-
     </form>
 </div>
 </div>
