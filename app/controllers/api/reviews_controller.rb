@@ -16,7 +16,7 @@ class Api::ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
-    @car = Car.find_by(make: params[:review][:car][:make], model: params[:review][:car][:model], year: params[:review][:car][:year], daily_rate: params[:review][:car][:daily_rate], weekly_rate: params[:review][:car][:weekly_rate], monthly_rate: params[:review][:car][:monthly_rate], img: params[:review][:car][:img], description: params[:review][:car][:description] )
+    @car = Car.find_by(make: params[:review][:car][:make], model: params[:review][:car][:model], year: params[:review][:car][:year], daily_rate: params[:review][:car][:daily_rate], weekly_discount: params[:review][:car][:weekly_discount], monthly_discount: params[:review][:car][:monthly_discount], img: params[:review][:car][:img], description: params[:review][:car][:description] )
     @review.customer = current_user
     @review.car = @car
     @review.reservation = Reservation.find(@review.reservation_id)
