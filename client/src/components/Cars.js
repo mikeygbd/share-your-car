@@ -1,5 +1,6 @@
 import React from 'react'
 import CarCard from './CarCard'
+import VehicleCard from './VehicleCard'
 import { connect } from 'react-redux'
 
 
