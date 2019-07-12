@@ -23,9 +23,9 @@ import StarRatingComponent from 'react-star-rating-component';
 const useStyles = makeStyles({
   card: {
     width: 645,
-    height: 800,
+    height: "100%",
     marginLeft: 320,
-
+    
   },
   avatar: {
       backgroundColor: 'white'[500],
