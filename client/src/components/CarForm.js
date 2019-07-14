@@ -82,25 +82,6 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         </div>
         <br />
         <form id="multi-form" onSubmit={handleSubmit}>
-          <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="type-simple">Type</InputLabel>
-          <Select
-            value={values.car_type}
-            onChange={handleTypeChange}
-            inputProps={{
-              name: 'car_type',
-              id: 'type-simple',
-            }}
-          >
-            <MenuItem value="Coupe">Coupe</MenuItem>
-            <MenuItem value="Sedan">Sedan</MenuItem>
-            <MenuItem value="SUV">SUV</MenuItem>
-            <MenuItem value="SUV">Van</MenuItem>
-            <MenuItem value="SUV">Truck</MenuItem>
-
-          </Select>
-        </FormControl>
-        <br />
             <FormControl className={classes.formControl}>
             <InputLabel htmlFor="make-simple">Make</InputLabel>
             <Select
@@ -783,6 +764,25 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
              {values.make === "Volvo" ? <MenuItem value="XC60 Hybrid">XC60 Hybrid</MenuItem> :  null }
              {values.make === "Volvo" ? <MenuItem value="XC90">XC90</MenuItem> :  null }
              {values.make === "Volvo" ? <MenuItem value="XC90 Hybrid">XC90 Hybrid</MenuItem> :  null }
+
+            </Select>
+          </FormControl>
+          <br />
+            <FormControl className={classes.formControl}>
+            <InputLabel htmlFor="type-simple">Type</InputLabel>
+            <Select
+              value={values.car_type}
+              onChange={handleTypeChange}
+              inputProps={{
+                name: 'car_type',
+                id: 'type-simple',
+              }}
+            >
+              <MenuItem value="Coupe">Coupe</MenuItem>
+              <MenuItem value="Sedan">Sedan</MenuItem>
+              <MenuItem value="SUV">SUV</MenuItem>
+              <MenuItem value="SUV">Van</MenuItem>
+              <MenuItem value="SUV">Truck</MenuItem>
 
             </Select>
           </FormControl>
