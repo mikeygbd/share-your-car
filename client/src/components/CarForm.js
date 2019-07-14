@@ -808,7 +808,7 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
         <br />
         <TextField
         name="total_passengers"
-        type="integer"
+        type="number"
         placeholder="Seats"
         onChange={handleChange}
         value={signupCarFormData.total_passengers}
