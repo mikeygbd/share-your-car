@@ -63,7 +63,6 @@ const Car = ({car, reviews}) => {
 
   const toggleReviews = (e) => {
     setShowReviews(prevShowReviews => !prevShowReviews)
-
   }
 
   return (
@@ -123,7 +122,7 @@ const Car = ({car, reviews}) => {
         <strong>Type:</strong> {car.car_type}<br/>
 
         <strong>Seats:</strong> {car.total_passengers}<br/>
-        
+
         <strong>Description:</strong> {car.description}<br/>
 
       </Typography>
