@@ -780,9 +780,10 @@ const CarForm = ({ history, signupCarFormData, updateSignupCarForm, signupCar}) 
             >
               <MenuItem value="Coupe">Coupe</MenuItem>
               <MenuItem value="Sedan">Sedan</MenuItem>
+              <MenuItem value="Wagon">Wagon</MenuItem>
               <MenuItem value="SUV">SUV</MenuItem>
-              <MenuItem value="SUV">Van</MenuItem>
-              <MenuItem value="SUV">Truck</MenuItem>
+              <MenuItem value="Van">Van</MenuItem>
+              <MenuItem value="Truck">Truck</MenuItem>
 
             </Select>
           </FormControl>
