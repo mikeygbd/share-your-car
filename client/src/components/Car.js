@@ -39,6 +39,17 @@ const Car = ({car, reviews}) => {
 
   const classes = useStyles();
 
+  function percentage(num, per)
+  {
+  return (num/100)*per;
+  }
+
+  const totalWeeklyPrice = (7 * car.daily_rate)
+  const totalMonthlyPrice = (30 * car.daily_rate)
+
+  const totalWeeklyDiscount = percentage(totalWeeklyPrice, car.weekly_discount)
+  const totalMonthlyDiscount = percentage(totalMonthlyPrice, car.monthly_discount)
+
   const title = `${car.make} ${car.model}`
 
   const [showReviews, setShowReviews] = useState(false)
@@ -117,7 +128,13 @@ const Car = ({car, reviews}) => {
 
         <strong>Weekly Discount:</strong> {car.weekly_discount}%<br/>
 
+        <strong>Weekly Savings:</strong> ${totalWeeklyDiscount}<br />
+
+
+
         <strong>Monthly Discount:</strong> {car.monthly_discount}%<br/>
+
+        <strong>Monthly Savings:</strong> ${totalMonthlyDiscount}<br />
 
         <strong>Type:</strong> {car.car_type}<br/>
 
