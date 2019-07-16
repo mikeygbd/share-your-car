@@ -190,7 +190,12 @@ background-color: rgba(0,0,0,0.5) !important;
   float: right;
 }
 .avatar {
-  margin-left: 25%;
+  margin-left: 5%;
+  border-radius: 10px;
+ border: 3px solid rgb(65 87 175);
+}
+.cc-avatar {
+  margin-left: 23%;
   border-radius: 10px;
  border: 3px solid rgb(65 87 175);
 }
@@ -235,4 +240,14 @@ background-color: rgba(0,0,0,0.5) !important;
 }
 .cc-ownerInfo {
   float: left;
+  border-radius: 10px;
+ border: 1.5px solid #333 ;
+ background-color: #ded;
+ color: #333;
+ padding: 1%;
+ margin-right: 2%;
+}
+
+.percentage {
+  color: rgb(30 123 25);
 }
