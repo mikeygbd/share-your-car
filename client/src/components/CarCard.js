@@ -1,23 +1,12 @@
 import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import CardActionArea from '@material-ui/core/CardActionArea';
-
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import {Card, CardContent, CardHeader, CardMedia, GridListTileBar, CardActions, CardActionArea, Collapse, Avatar, IconButton, Typography, Button,  } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link, withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { connect } from 'react-redux'
 import '../styles/car.css'
@@ -34,11 +23,16 @@ import StarRatingComponent from 'react-star-rating-component';
 const useStyles = makeStyles(theme => ({
   card: {
     backgroundColor: grey[400],
-    width: 345,
-    margin: 20,
+    width: 300,
+    margin: 8,
+
   },
   stars: {
     paddingTop: 15,
+  },
+  tileBar: {
+    height: 40,
+
   },
   cardHeader: {
     textAlign: 'left',
@@ -140,14 +134,11 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 
     <Card id="car-card" className={classes.card} >
 
-      <CardHeader className={classes.cardHeader}
-        avatar={
-          <Avatar aria-label="Owner Img" className="avatar" image={car.owner.img}>
-            <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
-          </Avatar>
-        }
-        action={
+     <CardActionArea  to={carLink} key={car.id}  component={Link} >
 
+       <div className="carImgContainer">
+
+         <div className="cc-star-rate">
            <StarRatingComponent
               className={classes.stars}
                name="rate2"
@@ -157,27 +148,30 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
                size="small"
                aria-label="Settings"
              />
-
-       }
-       title={title}
-       subheader={
-          <div className="year-rating">
-          <div className="year">
-          {car.year}
-          </div>
-
          </div>
-       }
-       />
-     <CardActionArea to={carLink} key={car.id}  component={Link} >
+
+         <div className="cc-daily-rate">
+         <Button variant="contained"  onClick={handleSubmit} size="small" color="primary">
+           ${car.daily_rate}/Day
+         </Button>
+         </div>
         <CardMedia
           className={classes.media}
           image={car.img}
           title= {title}
+          alt={title}
           />
+          <GridListTileBar
+            className={classes.tileBar}
+            title={title}
+            subtitle={car.year}
+
+            />
+        </div>
         </CardActionArea>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
+          <strong>Location:</strong> {car.location.city} {car.location.state}, {car.location.country}<br />
           {car.description}
         </Typography>
       </CardContent>
@@ -202,10 +196,9 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
             My Car
           </Button>
            :
-        <Button onClick={handleSubmit}  aria-label="Share">
+        <Button onClick={handleSubmit} color="primary"  aria-label="Share">
           Reserve
         </Button>}
-
 
         <IconButton
        className={clsx(classes.expand, {
@@ -221,11 +214,21 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
 
-          <Typography>
-    Daily Rate: ${car.daily_rate}<br />
-  Weekly Discount: {car.weekly_discount}%<br />
-Monthly Discount: {car.monthly_discount}%<br />
-          </Typography>
+
+            <div className="cc-ownerInfo">
+              <strong>Host</strong><br />
+            <Avatar aria-label="Owner Img" className="cc-avatar" image={car.owner.img}>
+              <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
+            </Avatar>
+              {car.owner.firstname} {car.owner.lastname}
+            </div>
+            <div classID="cc-info">
+            <strong>Seats:</strong> {car.total_passengers}<br />
+            <strong>Type:</strong> {car.car_type}<br />
+            <strong>Weekly Discount:</strong><span className="percentage"> -{car.weekly_discount}% </span><br />
+            <strong>Monthly Discount:</strong><span className="percentage"> -{car.monthly_discount}% </span><br />
+            </div>
+
           <div className="reviews-btn">
           {reviewCards ?
           <Button color="primary" onClick={toggleReviews} aria-label="Share">
