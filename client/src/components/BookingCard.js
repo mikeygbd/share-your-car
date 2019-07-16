@@ -1,21 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import { Card, CardContent, CardHeader, CardMedia, CardActions, Collapse, Avatar, IconButton, Typography, Button } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,24 +40,47 @@ const useStyles = makeStyles(theme => ({
 
 
 const BookingCard = ({ booking }) => {
+    const classes = useStyles()
+
   const resDate = (date) => {
-let d = new Date(date)
-let monthNames = [
-  "Jan", "Feb", "Mar",
-  "Apr", "May", "Jun", "Jul",
-  "Aug", "Sep", "Oct",
-  "Nov", "Dec"
-];
+    let d = new Date(date)
+    let monthNames = [
+      "Jan", "Feb", "Mar",
+      "Apr", "May", "Jun", "Jul",
+      "Aug", "Sep", "Oct",
+      "Nov", "Dec"
+    ];
+    let day = d.getDate()
+    let monthIndex = d.getMonth()
+    let year = d.getFullYear()
+    return monthIndex + '/' + day + '/' + year
+  }
 
-let day = d.getDate()
-let monthIndex = d.getMonth()
-let year = d.getFullYear()
-
-
-return monthNames[monthIndex] + '/' + day + '/' + year
+function parseDate(str) {
+    var mdy = str.split('/');
+    return new Date(mdy[2], mdy[0]-1, mdy[1]);
 }
 
-  const classes = useStyles()
+function datediff(first, second) {
+    // Take the difference between the dates and divide by milliseconds per day.
+    // Round to nearest whole number to deal with DST.
+    return Math.round((second-first)/(1000*60*60*24));
+}
+  const totalDuration = datediff(parseDate(resDate(booking.start_date)), parseDate(resDate(booking.end_date)))
+// alert(datediff(parseDate(first.value), parseDate(second.value)));
+    const totalPrice = (totalDuration * booking.car.daily_rate)
+    function percentage(num, per)
+    {
+    return (num/100)*per;
+    }
+
+    const totalWeeklyDiscount = percentage(totalPrice, booking.car.weekly_discount)
+    const totalMonthlyDiscount = percentage(totalPrice, booking.car.Monthly_discount)
+    const totalAfterWeeklyDiscount = totalPrice - totalWeeklyDiscount
+    const totalAfterMothlyDiscount = totalPrice - totalMonthlyDiscount
+
+
+
 
   const [expanded, setExpanded] = React.useState(false)
   const title = `${booking.car.make} ${booking.car.model}`
@@ -121,16 +135,15 @@ return monthNames[monthIndex] + '/' + day + '/' + year
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
-            Start Date: {resDate(booking.start_date)}<br />
-          Start Time: {booking.start_time}<br />
-        Return Date: {resDate(booking.end_date)}<br />
-        Return Time: {booking.end_time}<br />
-
-
-        Daily Rate: ${booking.car.daily_rate}<br />
-      Weekly Discount: ${booking.car.weekly_discount}<br />
-    Monthly Discount: ${booking.car.monthly_discount}<br />
-
+            <strong>Start Date:</strong> {resDate(booking.start_date)}<br />
+            <strong>Start Time:</strong> {booking.start_time}<br />
+            <strong>Return Date:</strong> {resDate(booking.end_date)}<br />
+            <strong>Return Time:</strong> {booking.end_time}<br />
+            <strong>Total Duration:</strong> {totalDuration} Days <br />
+            <strong>Daily Rate:</strong> ${booking.car.daily_rate}<br />
+            <strong>Total Price:</strong> ${totalPrice} <br />
+            {(totalDuration > 7 )? <><strong>Weekly Discount Applied:</strong> {booking.car.weekly_discount}%<br /><strong>Savings:</strong> ${totalWeeklyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterWeeklyDiscount}</><br /></> : null }
+            {(totalDuration > 30 )? <><strong>Monthly Discount Applied:</strong> {booking.car.monthly_discount}%<br /><strong>Savings:</strong> ${totalMonthlyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterMothlyDiscount}</><br /></> : null }
           </Typography>
         </CardContent>
     </Collapse>
