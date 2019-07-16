@@ -220,7 +220,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
             <Avatar aria-label="Owner Img" className="cc-avatar" image={car.owner.img}>
               <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
             </Avatar>
-              {car.owner.firstname} {car.owner.lastname}
+              {car.owner.firstname}
             </div>
             <div classID="cc-info">
             <strong>Seats:</strong> {car.total_passengers}<br />

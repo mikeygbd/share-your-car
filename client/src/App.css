@@ -195,8 +195,8 @@ background-color: rgba(0,0,0,0.5) !important;
  border: 3px solid rgb(65 87 175);
 }
 .cc-avatar {
-  margin-left: 23%;
   border-radius: 10px;
+  text-align: center;
  border: 3px solid rgb(65 87 175);
 }
 .cc-car-info {
@@ -241,11 +241,12 @@ background-color: rgba(0,0,0,0.5) !important;
 .cc-ownerInfo {
   float: left;
   border-radius: 10px;
- border: 1.5px solid #333 ;
- background-color: #ded;
- color: #333;
- padding: 1%;
- margin-right: 2%;
+ background-color: #333;
+ color: #eee;
+ padding: 5%;
+ margin-right: 1%;
+ margin-bottom: 10%;
+
 }
 
 .percentage {
