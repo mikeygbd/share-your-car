@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 import StarRatingComponent from 'react-star-rating-component';
 import { makeStyles } from '@material-ui/core/styles';
 import {CssBaseline, Typography, Container, Card, CardActionArea, CardMedia, Button, Avatar, GridListTile, GridListTileBar, CardContent  } from '@material-ui/core';
+import Calendar from './Calender'
+import ReservationForm from './ReservationForm'
+import { updateCreateReservationForm } from '../actions/createReservationForm'
 
 
 const useStyles = makeStyles({
@@ -16,7 +19,7 @@ card : {
   marginLeft: 320
 },
 avatar: {
-  backgroundColor: 'white' [500],
+  backgroundColor: 'black' [500],
   marginLeft: 30
 },
 gridList: {
@@ -35,9 +38,10 @@ reviews: {
 });
 
 
-const Car = ({car, reviews}) => {
+const Car = ({car, reviews, updateCreateReservationForm, createReservationFormData, history}) => {
 
   const classes = useStyles();
+
 
   function percentage(num, per)
   {
@@ -76,6 +80,27 @@ const Car = ({car, reviews}) => {
     setShowReviews(prevShowReviews => !prevShowReviews)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const updatedFormInfo = {
+      ...createReservationFormData,
+      car: {
+          id: car.id,
+          make: car.make,
+          model: car.model,
+          year: car.year,
+          img: car.img,
+          daily_rate: car.daily_rate,
+          weekly_discount: car.weekly_discount,
+          monthly_discount: car.monthly_discount,
+          description: car.description
+      }
+    }
+
+    updateCreateReservationForm(updatedFormInfo)
+    history.push('/create_reservation')
+  }
+
   return (
     <div className = "Car" > <Card className={classes.card}>
 
@@ -85,7 +110,7 @@ const Car = ({car, reviews}) => {
         <StarRatingComponent name="rate2" editing={false} starCount={5} value={avg}/>
       </div>
 
-      <Button variant="contained" to="/create_reservation" component={Link} size="small" color="primary" className="daily-rate">
+      <Button variant="contained"  onClick={handleSubmit} size="small" color="primary" className="daily-rate">
         ${car.daily_rate}/Day
       </Button>
 
@@ -107,14 +132,8 @@ const Car = ({car, reviews}) => {
   <CardContent>
 
     <div className="description">
-      {reviewCards ?
-        <Button color="primary" onClick={toggleReviews} aria-label="Share">
-          { showReviews ? "Hide Reviews" : "Show Reviews" }
-        </Button> : null }
-          { showReviews ?
-        <div className={classes.reviews}>
-          {reviewCards}
-        </div>  : null }
+      <Calendar car={car} reservations={car.reservations}/>
+
     </div>
 
     <div className="ownerInfo">
@@ -122,15 +141,13 @@ const Car = ({car, reviews}) => {
         <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
       </Avatar>
       <Typography className={classes.ownerInfo} variant="body2" color="textSecondary" component="p">
-        <strong>Owner:</strong> {car.owner.firstname} {car.owner.lastname}<br/>
+        <strong>Host:</strong> {car.owner.firstname} {car.owner.lastname}<br/>
 
         <strong>Location:</strong> {car.location.city}, {car.location.state}, {car.location.country}<br/>
 
         <strong>Weekly Discount:</strong> {car.weekly_discount}%<br/>
 
         <strong>Weekly Savings:</strong> ${totalWeeklyDiscount}<br />
-
-
 
         <strong>Monthly Discount:</strong> {car.monthly_discount}%<br/>
 
@@ -143,9 +160,24 @@ const Car = ({car, reviews}) => {
         <strong>Description:</strong> {car.description}<br/>
 
       </Typography>
-    </div>
-  </CardContent>
+      <br />
+      {reviewCards ?
+        <Button color="primary" onClick={toggleReviews} aria-label="Share">
+          { showReviews ? "Hide Reviews" : "Show Reviews" }
+        </Button> : null }
+          { showReviews ?
+        <div className={classes.reviews}>
+          {reviewCards}
+        </div>  : null }
 
+
+
+
+    </div>
+
+
+
+  </CardContent>
 </Card>
 
 </div>
@@ -156,10 +188,11 @@ const mapStateToProps = state => {
   return {
 
     reviews: state.reviews,
+    createReservationFormData: state.createReservationForm,
 
 
   }
 }
 
 
-export default connect(mapStateToProps)(Car)
+export default withRouter(connect(mapStateToProps, { updateCreateReservationForm })(Car))
