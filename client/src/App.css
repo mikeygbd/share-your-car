@@ -190,9 +190,13 @@ background-color: rgba(0,0,0,0.5) !important;
   float: right;
 }
 .avatar {
-  margin-left: 4%;
+  margin-left: 25%;
   border-radius: 10px;
  border: 3px solid rgb(65 87 175);
+}
+.cc-car-info {
+  text-align: left;
+
 }
 
 .carImgContainer{
@@ -209,10 +213,26 @@ background-color: rgba(0,0,0,0.5) !important;
   top: 40px;
   left: 16px;
 }
+.cc-star-rate {
+  position: absolute;
+
+  left: 2%;
+}
 
 /* Top right text */
 .daily-rate  {
   position: absolute;
   top: 40px;
   right: -270px;
+}
+.cc-daily-rate  {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+}
+.Calender {
+  margin-left: 100%;
+}
+.cc-ownerInfo {
+  float: left;
 }
