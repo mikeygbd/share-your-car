@@ -26,8 +26,9 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
   const handleSubmit = event => {
 
     event.preventDefault()
+     if (window.confirm('Are you sure you wish to reserve this car?'))
     createReservation(createReservationFormData)
-    history.push('/')
+    history.push('/my_profile')
 
   }
 
