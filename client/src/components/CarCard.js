@@ -151,7 +151,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
          </div>
 
          <div className="cc-daily-rate">
-           {car.owner.id == currentUser.id ?
+           {currentUser && (car.owner.id == currentUser.id) ?
              <Button variant="contained"size="small" color="primary">
                ${car.daily_rate}/Day
              </Button>
