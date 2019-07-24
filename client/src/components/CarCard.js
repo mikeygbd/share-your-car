@@ -1,18 +1,16 @@
 import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import {Card, CardContent, CardHeader, CardMedia, GridListTileBar, CardActions, CardActionArea, Collapse, Avatar, IconButton, Typography, Button,  } from '@material-ui/core';
+import {Card, CardContent, CardMedia, GridListTileBar, CardActions, CardActionArea, Collapse, Avatar, IconButton, Typography, Button,  } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link, withRouter } from 'react-router-dom';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { connect } from 'react-redux'
 import '../styles/car.css'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
 import ReviewCard from './ReviewCard'
-import Car from './Car'
 import { deleteOwnerCar } from '../actions/myCars'
 import { getMyCars } from '../actions/myCars'
 
@@ -151,7 +149,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
          </div>
 
          <div className="cc-daily-rate">
-           {currentUser && (car.owner.id == currentUser.id) ?
+           {currentUser && (car.owner.id === currentUser.id) ?
              <Button variant="contained"size="small" color="primary">
                ${car.daily_rate}/Day
              </Button>
