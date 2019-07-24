@@ -252,3 +252,12 @@ background-color: rgba(0,0,0,0.5) !important;
 .percentage {
   color: rgb(30 123 25);
 }
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+background-color: #999;
+color: #333;
+}
