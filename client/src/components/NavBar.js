@@ -1,15 +1,7 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import {AppBar, Tabs, Tab, Toolbar, IconButton, Typography, Badge, MenuItem, Menu,   } from '@material-ui/core';
 import PropTypes from 'prop-types'
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
@@ -17,7 +9,6 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { connect } from 'react-redux'
 import  '../styles/navbar.css'
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import logo from '../images/white_transparent.png';
 
@@ -35,17 +26,7 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={event => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -128,7 +109,6 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const AdapterLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
 
 const NavBar = ({ currentUser, myCars }) => {
 
