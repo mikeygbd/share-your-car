@@ -1,14 +1,11 @@
 import React, {useState} from 'react'
 import ReviewCard from './ReviewCard'
-import {useSelector, useAction} from 'react-redux'
-import {deleteMyCar} from '../actions/myCars'
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import StarRatingComponent from 'react-star-rating-component';
 import { makeStyles } from '@material-ui/core/styles';
-import {CssBaseline, Typography, Container, Card, CardActionArea, CardMedia, Button, Avatar, GridListTile, GridListTileBar, CardContent  } from '@material-ui/core';
+import { Typography, Card, CardMedia, Button, Avatar, GridListTile, GridListTileBar, CardContent  } from '@material-ui/core';
 import Calendar from './Calender'
-import ReservationForm from './ReservationForm'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
 
 
