@@ -98,7 +98,6 @@ export const deleteOwnerCar = (id) => {
       },
       body: JSON.stringify()
     })
-    console.log("HEllo")
     .then(r => r.json())
     .then(response => {
       console.log(response)
