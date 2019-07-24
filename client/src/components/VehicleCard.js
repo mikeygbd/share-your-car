@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { deleteOwnerCar } from '../actions/myCars'
 import { getMyCars } from '../actions/myCars'
 import { updateCreateReservationForm } from '../actions/createReservationForm'
