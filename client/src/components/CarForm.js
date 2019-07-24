@@ -1,22 +1,11 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {TextField, Button, Toolbar, InputLabel, MenuItem, FormControl, Select  } from '@material-ui/core';
 import '../styles/registration.css'
-import Toolbar from '@material-ui/core/Toolbar';
 import { connect } from 'react-redux';
 import { signupCar } from '../actions/myCars'
 import { updateSignupCarForm } from '../actions/signupCarForm'
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import FilledInput from '@material-ui/core/FilledInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuList from '@material-ui/core/MenuList';
 
 
 const useStyles = makeStyles(theme => ({
