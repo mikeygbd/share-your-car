@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactLightCalendar from '@lls/react-light-calendar'
-import ReservationCard from './ReservationCard';
 import '@lls/react-light-calendar/dist/index.css'
 
-const DAY_LABELS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-const MONTH_LABELS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -34,13 +31,6 @@ class Calendar extends React.Component {
 
     const resDate = (date) => {
   let d = new Date(date)
-  let monthNames = [
-    "Jan", "Feb", "Mar",
-    "Apr", "May", "Jun", "Jul",
-    "Aug", "Sep", "Oct",
-    "Nov", "Dec"
-  ];
-
   let day = d.getDate() + 1
   let monthIndex = d.getMonth() + 1
   let year = d.getFullYear()
@@ -73,12 +63,5 @@ class Calendar extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    reservations: state.reservations,
-    cars: state.cars,
-    currentUser: state.currentUser
 
-  }
-}
 export default Calendar
