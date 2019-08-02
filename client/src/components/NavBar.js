@@ -227,7 +227,7 @@ const NavBar = ({ currentUser, myCars }) => {
 
             <Tab centered='true' label='About'  to='/about' component={Link} />
             <Tab centered='true' label='Cars'  to='/cars' component={Link} />
-            <Tab centered='true' label={<img src={logo} width="60" alt="Logo"/>}  to='/' component={Link} />
+            <Tab centered='true' label={<img src={logo}  width="50" alt="Logo"/>}  to='/' component={Link}  />
             { currentUser && myCars.length > 0 ? <Tab centered='true' label='My Cars'  to='/my_cars' component={Link} /> : null}
             { currentUser ? <Tab centered='true' label='Logout'  to='/logout' component={Link} /> : <Tab centered='true' label='Login'  to='/login' component={Link} />}
             { currentUser ? null : <Tab centered='true' label='Sign Up'  to='/signup' component={Link} />}
