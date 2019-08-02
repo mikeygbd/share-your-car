@@ -119,12 +119,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
     )
   }
 
-  const handleDelete = (e) => {
-
-
-
-  }
-
   const carLink = `/cars/car_${car.id}`
 
   return (
