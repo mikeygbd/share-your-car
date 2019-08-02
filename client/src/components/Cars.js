@@ -26,7 +26,6 @@ const Cars = ({ cars, reviews}) => {
   }
 
 console.log(filterMake)
-  const updatedCars = []
   const carCards = cars.length > 0 ? cars
   .map(c => <CarCard car={c}  key={c.id}/>) : null
   return (
