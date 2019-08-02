@@ -16,7 +16,6 @@ card : {
   marginLeft: 320
 },
 avatar: {
-  backgroundColor: 'black' [500],
   marginLeft: 30
 },
 gridList: {
