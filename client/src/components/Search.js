@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
   },
   search: {
   height: 40,
+  width: 100,
   marginTop: 12,
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -18,10 +19,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: fade(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
-  width: '100%',
+  width: '25%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(1),
-    width: 'auto',
   },
 },
 searchIcon: {
@@ -41,7 +41,7 @@ inputRoot: {
    transition: theme.transitions.create('width'),
    width: '100%',
    [theme.breakpoints.up('sm')]: {
-     width: 120,
+     width: 150,
      '&:focus': {
        width: 200,
      },
@@ -65,6 +65,7 @@ const Search = ({cars, filterText, filterUpdate, filterUpdateMake}) => {
     car_type: '',
     make: '',
     model: '',
+    location: '',
   });
 
   function handleTypeChange(event) {
@@ -803,7 +804,7 @@ const Search = ({cars, filterText, filterUpdate, filterUpdateMake}) => {
 
         </Select>
       </FormControl>
-    
+
 
         <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -811,8 +812,8 @@ const Search = ({cars, filterText, filterUpdate, filterUpdateMake}) => {
             </div>
             <InputBase
               value={values.model}
-              name="model"
-              placeholder="Search…"
+              name="location"
+              placeholder="Search by Location…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
