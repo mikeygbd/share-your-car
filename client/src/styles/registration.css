@@ -67,7 +67,7 @@ float: left;
 
 }
 .UserForm-title-mc {
-  background-color: #333;
+  background-color: rgb(64 84 178);
   color: white;
   padding-left: 26%;
   padding-right: 26%;
@@ -76,7 +76,7 @@ float: left;
 
 }
 .UserForm-title-mc1 {
-  background-color: #333;
+  background-color: rgb(64 84 178);
   color: white;
   padding-left: 35%;
   padding-right: 35%;
@@ -84,7 +84,7 @@ float: left;
   border-top-right-radius: 5px;
 }
 .UserForm-title-mc2 {
-  background-color: #333;
+  background-color: rgb(64 84 178);
   color: white;
   padding-left: 27%;
   padding-right: 27%;
