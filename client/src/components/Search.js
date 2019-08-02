@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
   },
   search: {
   height: 40,
-  width: 100,
   marginTop: 12,
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
