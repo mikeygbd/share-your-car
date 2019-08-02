@@ -117,7 +117,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       setShowReviews(prevShowReviews =>
        !prevShowReviews
     )
-
   }
 
   const handleDelete = (e) => {
