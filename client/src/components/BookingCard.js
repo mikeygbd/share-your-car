@@ -44,12 +44,6 @@ const BookingCard = ({ booking }) => {
 
   const resDate = (date) => {
     let d = new Date(date)
-    let monthNames = [
-      "Jan", "Feb", "Mar",
-      "Apr", "May", "Jun", "Jul",
-      "Aug", "Sep", "Oct",
-      "Nov", "Dec"
-    ];
     let day = d.getDate()
     let monthIndex = d.getMonth()
     let year = d.getFullYear()
