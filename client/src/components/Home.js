@@ -6,11 +6,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 const useStyles = makeStyles({
-  share: {
 
-    // backgroundColor: "rgb(33 120 207)",
-    // color: "#eee",
-  },
 });
 
 const Home = ({ currentUser }) => {
@@ -35,7 +31,6 @@ const Home = ({ currentUser }) => {
 const mapStateToProps = ({currentUser}) => {
   return {
     currentUser,
-
   }
 }
 
