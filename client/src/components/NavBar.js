@@ -12,8 +12,6 @@ import  '../styles/navbar.css'
 import { Link } from 'react-router-dom';
 import logo from '../images/white_transparent.png';
 
-
-
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -26,8 +24,6 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -35,11 +31,9 @@ const useStyles = makeStyles(theme => ({
   },
   grow: {
     flexGrow: 1,
-
   },
   background: {
     backgroundColor: "#333",
-
   },
   textField: {
   marginLeft: theme.spacing(1),
@@ -53,7 +47,6 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-
     },
   },
   search: {
@@ -95,7 +88,6 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
-
     },
   },
   sectionMobile: {
@@ -105,10 +97,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-
-
-
-
 
 const NavBar = ({ currentUser, myCars }) => {
 
@@ -137,8 +125,6 @@ const NavBar = ({ currentUser, myCars }) => {
    setMobileMoreAnchorEl(event.currentTarget);
  }
 
-
-
  function handleChange(event, newValue) {
    setValue(newValue);
  }
@@ -155,7 +141,6 @@ const NavBar = ({ currentUser, myCars }) => {
      onClose={handleMenuClose}
    >
      <MenuItem label='My Profile' to='/my_profile' component={Link}>MY Profile</MenuItem>
-
    </Menu>
  );
 
@@ -200,7 +185,6 @@ const NavBar = ({ currentUser, myCars }) => {
    </Menu>
  );
 
-
   return (
     <div className={classes.grow}>
       <div className={classes.root}>
@@ -235,7 +219,6 @@ const NavBar = ({ currentUser, myCars }) => {
           </Tabs>
           </div>
 
-
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton
@@ -264,13 +247,8 @@ const NavBar = ({ currentUser, myCars }) => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-
     </div>
-
       </div>
-
-
-
   )
 }
 
