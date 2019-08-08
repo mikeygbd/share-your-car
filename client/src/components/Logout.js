@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { logout } from '../actions/currentUser'
-import Button from '@material-ui/core/Button';
+import { Button, Toolbar } from '@material-ui/core';
 import '../styles/registration.css'
-import Toolbar from '@material-ui/core/Toolbar';
 import { Link, withRouter } from 'react-router-dom';
 
 const Logout = ({ history, logout }) => {
