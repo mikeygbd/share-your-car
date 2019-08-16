@@ -27,7 +27,9 @@ const Cars = ({ cars, reviews}) => {
 
 console.log(filterMake)
   const carCards = cars.length > 0 ? cars
+
   .map(c => <CarCard car={c}  key={c.id}/>) : null
+  debugger
   return (
     <div>
     <div className="searchBar">
