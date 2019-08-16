@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 function CarContainer({ match, cars}) {
   let id = +match.params.carId.replace((/car_/), "")
   let car;
-
   if (cars.length > 0 && cars.find(car => car.id === id)) {
     car = cars.find(car => car.id === id)
     return <Car car={ car } />
@@ -16,11 +15,8 @@ function CarContainer({ match, cars}) {
 
 const mapStateToProps = state => {
   return {
-
     cars: state.cars
-
   }
 }
-
 
 export default connect(mapStateToProps)(CarContainer);
