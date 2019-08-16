@@ -44,8 +44,6 @@ const Login = ({ history, loginForm, updateLoginForm, login }) => {
     event.preventDefault()
     login(loginForm)
     history.push('/')
-
-
   }
 
   return (
@@ -65,7 +63,6 @@ const Login = ({ history, loginForm, updateLoginForm, login }) => {
         className={classes.textField}
         value={loginForm.email}
         onChange={handleInputChange}
-
       />
     <br />
       <TextField
@@ -93,7 +90,6 @@ const Login = ({ history, loginForm, updateLoginForm, login }) => {
   )
 }
 
-//allows for destructuring
 const mapStateToProps = state => {
   return {
   loginForm: state.loginForm
