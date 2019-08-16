@@ -8,14 +8,10 @@ import { Link, withRouter } from 'react-router-dom';
 const Logout = ({ history, logout }) => {
 
     const handleSubmit = event => {
-
     event.preventDefault()
-
     logout()
   history.push('/')
-
   }
-
 
   return (
     <div className="Logout">
