@@ -61,14 +61,10 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-
-
-
 const CarCard = ({ createReservationFormData, updateCreateReservationForm, history, myCars, car, deleteCar, filterCars, deleteOwnerCar, reviews, currentUser }) => {
   const classes = useStyles()
   // const deleteMyCar = useActions((carId) => deleteMyCarAction(carId))
    // const dispatch = useDispatch()
-
   const [showReviews, setShowReviews] = useState(false)
 
   var filteredArray = reviews.filter(function( review ) {
@@ -82,8 +78,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
     }
     var avg = totalRating / ratings.length;
   const reviewCards = filteredArray.length > 0 ? filteredArray.map((rw) =>  <ReviewCard review={rw} key={rw.id}/>) : null
-
-  // const delete_url = `/cars/${car.id}/destroy`
 
   const [expanded, setExpanded] = React.useState(false)
   const title = `${car.make} ${car.model}`
@@ -112,7 +106,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
     history.push('/create_reservation')
   }
 
-
   const toggleReviews = (e) => {
       setShowReviews(prevShowReviews =>
        !prevShowReviews
@@ -122,7 +115,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
   const carLink = `/cars/car_${car.id}`
 
   return (
-
     <Card id="car-card" className={classes.card} >
 
      <CardActionArea  to={carLink} key={car.id}  component={Link} >
@@ -177,17 +169,11 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
             <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={ () => { if (window.confirm('Are you sure you wish to delete this car?'))  deleteOwnerCar(car.id) } } >
             <DeleteOutlinedIcon    />
             </IconButton>
-
              :
              <IconButton aria-label="Add to favorites" className={classes.iconHover}  >
              <FavoriteIcon />
              </IconButton>
-
             }
-
-
-
-
         {currentUser && (car.owner.email === currentUser.email) ?
           <Button label='MyCars' color="primary" to='/my_cars' component={Link}  aria-label="Share">
             My Car
@@ -196,7 +182,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
         <Button onClick={handleSubmit} color="primary"  aria-label="Share">
           Reserve
         </Button>}
-
         <IconButton
        className={clsx(classes.expand, {
          [classes.expandOpen]: expanded,
@@ -210,7 +195,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-
 
             <div className="cc-ownerInfo">
               <strong>Host</strong><br />
@@ -239,9 +223,6 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
         </CardContent>
     </Collapse>
     </Card>
-
-
-
   )
 }
 
@@ -251,7 +232,6 @@ const mapStateToProps = state => {
     createReservationFormData: state.createReservationForm,
     reviews: state.reviews,
     myCars: state.myCars
-
   }
 }
 
