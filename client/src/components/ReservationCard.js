@@ -115,7 +115,6 @@ function datediff(first, second) {
 
     updateCreateReviewForm(updatedFormInfo)
     history.push('/create_review')
-
   }
 
   return (
@@ -165,7 +164,6 @@ function datediff(first, second) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography className="reservation-info">
-
               <strong>Start Date:</strong> {resDate(reservation.start_date)}<br />
               <strong>Start Time:</strong> {reservation.start_time}<br />
               <strong>Return Date:</strong> {resDate(reservation.end_date)}<br />
@@ -179,8 +177,6 @@ function datediff(first, second) {
         </CardContent>
     </Collapse>
     </Card>
-
-
   )
 }
 
@@ -189,7 +185,6 @@ const mapStateToProps = state => {
     reviews: state.reviews,
     currentUser: state.currentUser,
     createReviewFormData: state.createReviewFormData
-
   }
 }
 
