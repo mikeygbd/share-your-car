@@ -3,17 +3,16 @@ import CarCard from './CarCard'
 import { connect } from 'react-redux'
 import {deleteOwnerCar} from '../actions/myCars';
 
+
+
 const MyCars = ({ myCars, currentUser}) => {
 
 // console.log(myCars)
   const deleteOwnerCar = (id) => {
-
        myCars.filter(car => {
        return car.id !== id
-
      })
-      console.log(id)
-      console.log(myCars)
+
   }
 
 
