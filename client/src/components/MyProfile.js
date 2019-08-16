@@ -19,8 +19,6 @@ const useStyles = makeStyles({
   },
   share: {
     marginLeft: 515,
-    // backgroundColor: "rgb(33 120 207)",
-    // color: "#eee",
   },
   avatar: {
     width: 200,
@@ -94,10 +92,7 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
   </Card>
   </div>
     </div>
-
-
   )
-
 }
 
 const mapStateToProps = ({currentUser, myCars, myReservations, myBookings}) => {
