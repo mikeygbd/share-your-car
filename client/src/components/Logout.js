@@ -15,19 +15,19 @@ const Logout = ({ history, logout }) => {
 
   return (
     <div className="Logout">
-    <div className="UserForm">
-    <div className="UserForm-title">
-      <Toolbar>Are You Sure You Want To Log Out?</Toolbar>
-    </div>
-    <form className="logout-form" onSubmit={handleSubmit}>
-      <div className="logout-btn">
-        <Button  variant="contained" size="small" color="primary" type="submit"  >
-           Logout
-        </Button>
+      <div className="UserForm">
+        <div className="UserForm-title">
+          <Toolbar>Are You Sure You Want To Log Out?</Toolbar>
+        </div>
+        <form className="logout-form" onSubmit={handleSubmit}>
+          <div className="logout-btn">
+            <Button  variant="contained" size="small" color="primary" type="submit"  >
+              Logout
+            </Button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-  </div>
+    </div>
   )
 }
 
