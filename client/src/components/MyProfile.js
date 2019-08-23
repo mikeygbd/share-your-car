@@ -41,21 +41,21 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
 
   return (
     <div className="user-profile">
-    <div className="user-card">
-    <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image="https://wallpaperaccess.com/full/124088.jpg"
-          />
-        <Avatar aria-label="Owner Img" className={classes.avatar}>
-          <img className="profile-img"  src={currentUser.img} alt="Profile Pic"/>
-        </Avatar>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {currentUser.firstname} {currentUser.lastname}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {currentUser.hometown.city}, {currentUser.hometown.state}<br />
+      <div className="user-card">
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.media}
+            image="https://wallpaperaccess.com/full/124088.jpg"
+            />
+          <Avatar aria-label="Owner Img" className={classes.avatar}>
+            <img className="profile-img"  src={currentUser.img} alt="Profile Pic"/>
+          </Avatar>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {currentUser.firstname} {currentUser.lastname}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {currentUser.hometown.city}, {currentUser.hometown.state}<br />
             {currentUser.hometown.country}
           </Typography>
           <CardActions>
@@ -64,34 +64,32 @@ const MyProfile = ({myCars, currentUser, myReservations, myBookings}) => {
             </Button>
           </CardActions>
         </CardContent>
-
-    <div>
-      {carCards ?
-    <div className="UserForm-mc profile-panels">
-    <div className="UserForm-title-mc1">
-      <Toolbar>My Cars</Toolbar>
-    </div>
-    {carCards}
-    </div> : null}
-    {bookingCards ?
-    <div className="UserForm-mc profile-panels">
-    <div className="UserForm-title-mc2">
-      <Toolbar>My Bookings</Toolbar>
-    </div>
-    {bookingCards}
-  </div> : null}
-    {reservationCards ?
-    <div className="UserForm-mc profile-panels">
-     <div className="UserForm-title-mc">
-      <Toolbar>My Reservations</Toolbar>
-    </div>
-    {reservationCards}
-    </div>: null}
-  </div>
-
-  </Card>
-  </div>
-    </div>
+        <div>
+          {carCards ?
+            <div className="UserForm-mc profile-panels">
+              <div className="UserForm-title-mc1">
+                <Toolbar>My Cars</Toolbar>
+              </div>
+              {carCards}
+            </div> : null}
+            {bookingCards ?
+              <div className="UserForm-mc profile-panels">
+                <div className="UserForm-title-mc2">
+                  <Toolbar>My Bookings</Toolbar>
+                </div>
+                {bookingCards}
+              </div> : null}
+              {reservationCards ?
+                <div className="UserForm-mc profile-panels">
+                  <div className="UserForm-title-mc">
+                    <Toolbar>My Reservations</Toolbar>
+                  </div>
+                  {reservationCards}
+                </div>: null}
+              </div>
+            </Card>
+          </div>
+        </div>
   )
 }
 
