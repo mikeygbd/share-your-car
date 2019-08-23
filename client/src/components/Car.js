@@ -92,101 +92,82 @@ const Car = ({car, reviews, updateCreateReservationForm, createReservationFormDa
           description: car.description
       }
     }
-
     updateCreateReservationForm(updatedFormInfo)
     history.push('/create_reservation')
   }
 
   return (
     <div className = "Car" > <Card className={classes.card}>
+      <GridListTile className={classes.gtile}>
+        <div className="carImgContainer">
+          <div className="star-rate">
+            <StarRatingComponent name="rate2" editing={false} starCount={5} value={avg}/>
+          </div>
+          <Button variant="contained"  onClick={handleSubmit} size="small" color="primary" className="daily-rate">
+            ${car.daily_rate}/Day
+          </Button>
+          <CardMedia
+            className={classes.img}
+            component="img"
+            alt={title}
+            height="340"
+            image={car.img}
+            title={title}
+            />
+        </div>
+        <GridListTileBar
+          title={title}
+          subtitle={car.year}
+          />
+      </GridListTile>
+      <CardContent>
+        <div className="description">
+          <Calendar car={car} reservations={car.reservations}/>
+        </div>
+        <div className="ownerInfo">
+          <Avatar aria-label="Owner Img" className="avatar" image={car.owner.img}>
+            <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
+          </Avatar>
+          <Typography className={classes.ownerInfo} variant="body2" color="textSecondary" component="p">
+            <strong>Host:</strong> {car.owner.firstname} {car.owner.lastname}<br/>
 
-  <GridListTile className={classes.gtile}>
-    <div className="carImgContainer">
-      <div className="star-rate">
-        <StarRatingComponent name="rate2" editing={false} starCount={5} value={avg}/>
+            <strong>Location:</strong> {car.location.city}, {car.location.state}, {car.location.country}<br/>
+
+            <strong>Weekly Discount:</strong> {car.weekly_discount}%<br/>
+
+            <strong>Weekly Savings:</strong> ${totalWeeklyDiscount}<br />
+
+            <strong>Monthly Discount:</strong> {car.monthly_discount}%<br/>
+
+            <strong>Monthly Savings:</strong> ${totalMonthlyDiscount}<br />
+
+            <strong>Type:</strong> {car.car_type}<br/>
+
+            <strong>Seats:</strong> {car.total_passengers}<br/>
+
+            <strong>Description:</strong> {car.description}<br/>
+
+          </Typography>
+          <br />
+          {reviewCards ?
+            <Button color="primary" onClick={toggleReviews} aria-label="Share">
+              { showReviews ? "Hide Reviews" : "Show Reviews" }
+            </Button> : null }
+            { showReviews ?
+              <div className={classes.reviews}>
+                {reviewCards}
+              </div>  : null }
+            </div>
+          </CardContent>
+        </Card>
       </div>
-
-      <Button variant="contained"  onClick={handleSubmit} size="small" color="primary" className="daily-rate">
-        ${car.daily_rate}/Day
-      </Button>
-
-      <CardMedia
-        className={classes.img}
-        component="img"
-        alt={title}
-        height="340"
-        image={car.img}
-        title={title}
-        />
-    </div>
-    <GridListTileBar
-      title={title}
-      subtitle={car.year}
-      />
-  </GridListTile>
-
-  <CardContent>
-
-    <div className="description">
-      <Calendar car={car} reservations={car.reservations}/>
-
-    </div>
-
-    <div className="ownerInfo">
-      <Avatar aria-label="Owner Img" className="avatar" image={car.owner.img}>
-        <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
-      </Avatar>
-      <Typography className={classes.ownerInfo} variant="body2" color="textSecondary" component="p">
-        <strong>Host:</strong> {car.owner.firstname} {car.owner.lastname}<br/>
-
-        <strong>Location:</strong> {car.location.city}, {car.location.state}, {car.location.country}<br/>
-
-        <strong>Weekly Discount:</strong> {car.weekly_discount}%<br/>
-
-        <strong>Weekly Savings:</strong> ${totalWeeklyDiscount}<br />
-
-        <strong>Monthly Discount:</strong> {car.monthly_discount}%<br/>
-
-        <strong>Monthly Savings:</strong> ${totalMonthlyDiscount}<br />
-
-        <strong>Type:</strong> {car.car_type}<br/>
-
-        <strong>Seats:</strong> {car.total_passengers}<br/>
-
-        <strong>Description:</strong> {car.description}<br/>
-
-      </Typography>
-      <br />
-      {reviewCards ?
-        <Button color="primary" onClick={toggleReviews} aria-label="Share">
-          { showReviews ? "Hide Reviews" : "Show Reviews" }
-        </Button> : null }
-          { showReviews ?
-        <div className={classes.reviews}>
-          {reviewCards}
-        </div>  : null }
-
-
-
-
-    </div>
-
-
-
-  </CardContent>
-</Card>
-
-</div>
   )
 }
 
 const mapStateToProps = state => {
   return {
-
     reviews: state.reviews,
-    createReservationFormData: state.createReservationForm,
-
-
+    createReservationFormData: state.createReservationForm
   }
 }
 
