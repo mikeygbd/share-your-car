@@ -54,10 +54,10 @@ class Calendar extends React.Component {
 
 
     return (
-          <div>
-          {reservation}
-          {reservationsCalendar ? reservationsCalendar : <ReactLightCalendar disableDates={date => date < new Date().getTime()}  startDate={startDate} endDate={endDate} onChange={this.onChange} range displayTime/>}
-        </div>
+      <div>
+        {reservation}
+        {reservationsCalendar ? reservationsCalendar : <ReactLightCalendar disableDates={date => date < new Date().getTime()}  startDate={startDate} endDate={endDate} onChange={this.onChange} range displayTime/>}
+      </div>
 
     )
   }
