@@ -92,17 +92,17 @@ function datediff(first, second) {
           </Avatar>
         }
         action={
-         <IconButton aria-label="Settings">
-           <MoreVertIcon />
-         </IconButton>
-       }
-       title={title}
-       subheader={booking.car.year}/>
-        <CardMedia
-          className={classes.media}
-          image={booking.car.img}
-          title= {title}
-          />
+          <IconButton aria-label="Settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={title}
+        subheader={booking.car.year}/>
+      <CardMedia
+        className={classes.media}
+        image={booking.car.img}
+        title= {title}
+        />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {booking.car.description}
@@ -116,15 +116,15 @@ function datediff(first, second) {
           Review
         </Button>
         <IconButton
-       className={clsx(classes.expand, {
-         [classes.expandOpen]: expanded,
-       })}
-       onClick={handleExpandClick}
-       aria-expanded={expanded}
-       aria-label="Show more"
-     >
-       <ExpandMoreIcon />
-     </IconButton>
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="Show more"
+          >
+          <ExpandMoreIcon />
+        </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
@@ -140,10 +140,8 @@ function datediff(first, second) {
             {(totalDuration > 30 )? <><strong>Monthly Discount Applied:</strong> {booking.car.monthly_discount}%<br /><strong>Savings:</strong> ${totalMonthlyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterMothlyDiscount}</><br /></> : null }
           </Typography>
         </CardContent>
-    </Collapse>
+      </Collapse>
     </Card>
-
-
   )
 }
 
