@@ -117,39 +117,39 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
   return (
     <Card id="car-card" className={classes.card} >
 
-     <CardActionArea  to={carLink} key={car.id}  component={Link} >
+      <CardActionArea  to={carLink} key={car.id}  component={Link} >
 
-       <div className="carImgContainer">
+        <div className="carImgContainer">
 
-         <div className="cc-star-rate">
-           <StarRatingComponent
+          <div className="cc-star-rate">
+            <StarRatingComponent
               className={classes.stars}
-               name="rate2"
-               editing={false}
-               starCount={5}
-               value={avg}
-               size="small"
-               aria-label="Settings"
-             />
-         </div>
+              name="rate2"
+              editing={false}
+              starCount={5}
+              value={avg}
+              size="small"
+              aria-label="Settings"
+              />
+          </div>
 
-         <div className="cc-daily-rate">
-           {currentUser && (car.owner.id === currentUser.id) ?
-             <Button variant="contained"size="small" color="primary">
-               ${car.daily_rate}/Day
-             </Button>
-           :
-         <Button variant="contained"  onClick={handleSubmit} size="small" color="primary">
-           ${car.daily_rate}/Day
-         </Button>
-       }
-         </div>
-        <CardMedia
-          className={classes.media}
-          image={car.img}
-          title= {title}
-          alt={title}
-          />
+          <div className="cc-daily-rate">
+            {currentUser && (car.owner.id === currentUser.id) ?
+              <Button variant="contained"size="small" color="primary">
+                ${car.daily_rate}/Day
+              </Button>
+              :
+              <Button variant="contained"  onClick={handleSubmit} size="small" color="primary">
+                ${car.daily_rate}/Day
+              </Button>
+            }
+          </div>
+          <CardMedia
+            className={classes.media}
+            image={car.img}
+            title= {title}
+            alt={title}
+            />
           <GridListTileBar
             className={classes.tileBar}
             title={title}
@@ -157,7 +157,7 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
 
             />
         </div>
-        </CardActionArea>
+      </CardActionArea>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           <strong>Location:</strong> {car.location.city} {car.location.state}, {car.location.country}<br />
@@ -165,64 +165,64 @@ const CarCard = ({ createReservationFormData, updateCreateReservationForm, histo
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-          {currentUser && (car.owner.email === currentUser.email) ?
-            <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={ () => { if (window.confirm('Are you sure you wish to delete this car?'))  deleteOwnerCar(car.id) } } >
+        {currentUser && (car.owner.email === currentUser.email) ?
+          <IconButton aria-label="Delete Car" className={classes.iconHover}  onClick={ () => { if (window.confirm('Are you sure you wish to delete this car?'))  deleteOwnerCar(car.id) } } >
             <DeleteOutlinedIcon    />
-            </IconButton>
-             :
-             <IconButton aria-label="Add to favorites" className={classes.iconHover}  >
-             <FavoriteIcon />
-             </IconButton>
-            }
+          </IconButton>
+          :
+          <IconButton aria-label="Add to favorites" className={classes.iconHover}  >
+            <FavoriteIcon />
+          </IconButton>
+        }
         {currentUser && (car.owner.email === currentUser.email) ?
           <Button label='MyCars' color="primary" to='/my_cars' component={Link}  aria-label="Share">
             My Car
           </Button>
-           :
-        <Button onClick={handleSubmit} color="primary"  aria-label="Share">
-          Reserve
-        </Button>}
-        <IconButton
-       className={clsx(classes.expand, {
-         [classes.expandOpen]: expanded,
-       })}
-       onClick={handleExpandClick}
-       aria-expanded={expanded}
-       aria-label="Show more"
-     >
-       <ExpandMoreIcon />
-     </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+          :
+          <Button onClick={handleSubmit} color="primary"  aria-label="Share">
+            Reserve
+          </Button>}
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="Show more"
+            >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
 
             <div className="cc-ownerInfo">
               <strong>Host</strong><br />
-            <Avatar aria-label="Owner Img" className="cc-avatar" image={car.owner.img}>
-              <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
-            </Avatar>
+              <Avatar aria-label="Owner Img" className="cc-avatar" image={car.owner.img}>
+                <img className="owner-img" src={car.owner.img} alt="Profile Pic"/>
+              </Avatar>
               {car.owner.firstname}
             </div>
             <div classID="cc-info">
-            <strong>Seats:</strong> {car.total_passengers}<br />
-            <strong>Type:</strong> {car.car_type}<br />
-            <strong>Weekly Discount:</strong><span className="percentage"> -{car.weekly_discount}% </span><br />
-            <strong>Monthly Discount:</strong><span className="percentage"> -{car.monthly_discount}% </span><br />
+              <strong>Seats:</strong> {car.total_passengers}<br />
+              <strong>Type:</strong> {car.car_type}<br />
+              <strong>Weekly Discount:</strong><span className="percentage"> -{car.weekly_discount}% </span><br />
+              <strong>Monthly Discount:</strong><span className="percentage"> -{car.monthly_discount}% </span><br />
             </div>
 
-          <div className="reviews-btn">
-          {reviewCards ?
-          <Button color="primary" onClick={toggleReviews} aria-label="Share">
-            {showReviews ? "Hide Reviews" : "Show Reviews" }
-          </Button> : null }
-          { showReviews ?
-            <div>
-               {reviewCards}
-            </div>  : null}
-          </div>
-        </CardContent>
-    </Collapse>
-    </Card>
+            <div className="reviews-btn">
+              {reviewCards ?
+                <Button color="primary" onClick={toggleReviews} aria-label="Share">
+                  {showReviews ? "Hide Reviews" : "Show Reviews" }
+                </Button> : null }
+                { showReviews ?
+                  <div>
+                    {reviewCards}
+                  </div>  : null}
+                </div>
+              </CardContent>
+            </Collapse>
+          </Card>
   )
 }
 
