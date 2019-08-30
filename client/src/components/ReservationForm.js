@@ -32,64 +32,64 @@ const ReservationForm = ({ history, createReservationFormData, updateCreateReser
     return (
 
       <div className="Reservation">
-    <div className="UserForm">
-        <div className="UserForm-title">
-        <Toolbar>Reservation Details</Toolbar>
-        </div>
-        <br />
-        <form id="multi-form" onSubmit={handleSubmit}>
-          <img src={createReservationFormData.car.img} width="276" alt="car"/><br />
-        <TextField
-        InputLabelProps={{ shrink: true }}
-        label="Start Date"
-        name="start_date"
-        type="date"
-        onChange={handleChange}
-        value={createReservationFormData.start_date}
-        required
-        />
-        <br />
-        <TextField
-        InputLabelProps={{ shrink: true }}
-        label="Return Date"
-        name="end_date"
-        type="date"
-        onChange={handleChange}
-        value={createReservationFormData.end_date}
-        required
-        />
-        <br />
-          <TextField
-          InputLabelProps={{ shrink: true }}
-          label="Start Time"
-          name="start_time"
-          type="time"
-          onChange={handleChange}
-          value={createReservationFormData.start_time}
-          required
-          />
-        <br />
-          <TextField
-          InputLabelProps={{ shrink: true }}
-          label="Return Time"
-          name="end_time"
-          type="time"
-          onChange={handleChange}
-          value={createReservationFormData.end_time}
-          required
-          />
+        <div className="UserForm">
+          <div className="UserForm-title">
+            <Toolbar>Reservation Details</Toolbar>
+          </div>
           <br />
-        <div className="reg-btn">
-        <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        onClick={handleSubmit}
-        >Reserve</Button>
+          <form id="multi-form" onSubmit={handleSubmit}>
+            <img src={createReservationFormData.car.img} width="276" alt="car"/><br />
+            <TextField
+              InputLabelProps={{ shrink: true }}
+              label="Start Date"
+              name="start_date"
+              type="date"
+              onChange={handleChange}
+              value={createReservationFormData.start_date}
+              required
+              />
+            <br />
+            <TextField
+              InputLabelProps={{ shrink: true }}
+              label="Return Date"
+              name="end_date"
+              type="date"
+              onChange={handleChange}
+              value={createReservationFormData.end_date}
+              required
+              />
+            <br />
+            <TextField
+              InputLabelProps={{ shrink: true }}
+              label="Start Time"
+              name="start_time"
+              type="time"
+              onChange={handleChange}
+              value={createReservationFormData.start_time}
+              required
+              />
+            <br />
+            <TextField
+              InputLabelProps={{ shrink: true }}
+              label="Return Time"
+              name="end_time"
+              type="time"
+              onChange={handleChange}
+              value={createReservationFormData.end_time}
+              required
+              />
+            <br />
+            <div className="reg-btn">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}
+                >Reserve</Button>
+            </div>
+          </form>
         </div>
-    </form>
-</div>
-</div>
+      </div>
     )
   }
 
