@@ -19,13 +19,12 @@ class Rating extends React.Component {
 
     return (
       <div>
-
         <StarRatingComponent
           name="rate1"
           starCount={5}
           value={rating}
           onStarClick={this.onStarClick.bind(this)}
-        />
+          />
       </div>
     );
   }
