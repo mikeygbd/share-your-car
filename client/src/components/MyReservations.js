@@ -8,8 +8,7 @@ const MyReservations = ({ myReservations, currentUser}) => {
 
   return (
     <div className="MyReservations">
-
-     {reservationCards}
+      {reservationCards}
     </div>
   )
 }
