@@ -32,42 +32,42 @@ const ReviewForm = ({ history, createReviewFormData, updateCreateReviewForm, cre
     return (
 
       <div className="Review">
-    <div className="UserForm">
-        <div className="UserForm-title">
-        <Toolbar>Review Details</Toolbar>
+        <div className="UserForm">
+          <div className="UserForm-title">
+            <Toolbar>Review Details</Toolbar>
+          </div>
+          <br />
+          <form id="multi-form" onSubmit={handleSubmit}>
+            <Rating/>
+            <TextField
+              name="rating"
+              type="rating"
+              placeholder="Rating 1-5"
+              onChange={handleChange}
+              value={createReviewFormData.rating}
+              required
+              />
+            <br />
+            <TextField
+              name="content"
+              type="text-area"
+              placeholder="Content"
+              onChange={handleChange}
+              value={createReviewFormData.content}
+              required
+              />
+            <br />
+            <div className="reg-btn">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}
+                >Sumbit</Button>
+            </div>
+          </form>
         </div>
-        <br />
-        <form id="multi-form" onSubmit={handleSubmit}>
-        <Rating/>
-        <TextField
-        name="rating"
-        type="rating"
-        placeholder="Rating 1-5"
-        onChange={handleChange}
-        value={createReviewFormData.rating}
-        required
-        />
-        <br />
-          <TextField
-          name="content"
-          type="text-area"
-          placeholder="Content"
-          onChange={handleChange}
-          value={createReviewFormData.content}
-          required
-          />
-        <br />
-        <div className="reg-btn">
-        <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        onClick={handleSubmit}
-        >Sumbit</Button>
-        </div>
-    </form>
-</div>
-</div>
+      </div>
     )
   }
 
