@@ -9,9 +9,8 @@ const Reviews = ({ reviews}) => {
 
   return (
     <div className="Reviews">
-
-     {reviewCards}
-     </div>
+      {reviewCards}
+    </div>
   )
 }
 
