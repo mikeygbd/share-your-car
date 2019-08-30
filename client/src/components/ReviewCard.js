@@ -52,22 +52,22 @@ const ReviewCard = ({ review, currentUser }) => {
             <img className="owner-img" src={review.customer.img} alt="Profile Pic"/>
           </Avatar>
         }
-       title={fullName}
-       subheader={
-         <>
-         <StarRatingComponent
-             name="rate2"
-             editing={false}
-             starCount={5}
-             value={review.rating}
-           />
-           <Typography variant="body2" color="textSecondary" component="p">
-             {review.content}
-           </Typography>
-           </>
-       }
-       />
-    </Card>
+        title={fullName}
+        subheader={
+          <>
+          <StarRatingComponent
+            name="rate2"
+            editing={false}
+            starCount={5}
+            value={review.rating}
+            />
+          <Typography variant="body2" color="textSecondary" component="p">
+            {review.content}
+          </Typography>
+          </>
+      }
+      />
+  </Card>
   )
 }
 
