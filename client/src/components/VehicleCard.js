@@ -57,31 +57,31 @@ const VehicleCar = ({ createReservationFormData, updateCreateReservationForm, hi
 
   return (
     <div className={classes.root}>
-        <GridList cellHeight={180} cols={3} cellHeight={250} cellWidth={300} className={classes.gridList}>
-          <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
-            <ListSubheader className={classes.sub} component="div">Cars</ListSubheader>
-          </GridListTile>
-          {cars.map(car => (
-            <GridListTile >
-              <CardActionArea>
+      <GridList cellHeight={180} cols={3} cellHeight={250} cellWidth={300} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
+          <ListSubheader className={classes.sub} component="div">Cars</ListSubheader>
+        </GridListTile>
+        {cars.map(car => (
+          <GridListTile >
+            <CardActionArea>
 
               <img className={classes.tile} src={car.img}  alt={car.title} />
-              </CardActionArea>
-              <GridListTileBar
-                title={<span> {car.make} {car.model}</span>}
-                subtitle={<span> {car.year}</span>}
-                actionIcon={
-                  <IconButton aria-label={`info about ${car.title}`} className={classes.icon}>
-                    <InfoIcon />
-                  </IconButton>
-                }
+            </CardActionArea>
+            <GridListTileBar
+              title={<span> {car.make} {car.model}</span>}
+              subtitle={<span> {car.year}</span>}
+              actionIcon={
+                <IconButton aria-label={`info about ${car.title}`} className={classes.icon}>
+                  <InfoIcon />
+                </IconButton>
+              }
               />
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
-    );
-  }
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  );
+}
 
    const mapStateToProps = state => {
      return {
