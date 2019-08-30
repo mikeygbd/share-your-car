@@ -127,17 +127,17 @@ function datediff(first, second) {
           </Avatar>
         }
         action={
-         <IconButton aria-label="Settings">
-           <MoreVertIcon />
-         </IconButton>
-       }
-       title={title}
-       subheader={reservation.car.year}/>
-        <CardMedia
-          className={classes.media}
-          image={reservation.car.img}
-          title= {title}
-          />
+          <IconButton aria-label="Settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={title}
+        subheader={reservation.car.year}/>
+      <CardMedia
+        className={classes.media}
+        image={reservation.car.img}
+        title= {title}
+        />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {reservation.car.description}
@@ -151,31 +151,31 @@ function datediff(first, second) {
           Review
         </Button>
         <IconButton
-       className={clsx(classes.expand, {
-         [classes.expandOpen]: expanded,
-       })}
-       onClick={handleExpandClick}
-       aria-expanded={expanded}
-       aria-label="Show more"
-     >
-       <ExpandMoreIcon />
-     </IconButton>
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="Show more"
+          >
+          <ExpandMoreIcon />
+        </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography className="reservation-info">
-              <strong>Start Date:</strong> {resDate(reservation.start_date)}<br />
-              <strong>Start Time:</strong> {reservation.start_time}<br />
-              <strong>Return Date:</strong> {resDate(reservation.end_date)}<br />
-              <strong>Return Time:</strong> {reservation.end_time}<br />
-              <strong>Total Duration:</strong> {totalDuration} Days <br />
-              <strong>Daily Rate:</strong> ${reservation.car.daily_rate}<br />
-              <strong>Total Price:</strong> ${totalPrice} <br />
-               {(totalDuration > 7 )? <><strong>Weekly Discount Applied:</strong> {reservation.car.weekly_discount}%<br /><strong>Savings:</strong> ${totalWeeklyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterWeeklyDiscount}</><br /></> : null }
-               {(totalDuration > 30 )? <><strong>Monthly Discount Applied:</strong> {reservation.car.monthly_discount}%<br /><strong>Savings:</strong> ${totalMonthlyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterMothlyDiscount}</><br /></> : null }
+            <strong>Start Date:</strong> {resDate(reservation.start_date)}<br />
+            <strong>Start Time:</strong> {reservation.start_time}<br />
+            <strong>Return Date:</strong> {resDate(reservation.end_date)}<br />
+            <strong>Return Time:</strong> {reservation.end_time}<br />
+            <strong>Total Duration:</strong> {totalDuration} Days <br />
+            <strong>Daily Rate:</strong> ${reservation.car.daily_rate}<br />
+            <strong>Total Price:</strong> ${totalPrice} <br />
+            {(totalDuration > 7 )? <><strong>Weekly Discount Applied:</strong> {reservation.car.weekly_discount}%<br /><strong>Savings:</strong> ${totalWeeklyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterWeeklyDiscount}</><br /></> : null }
+            {(totalDuration > 30 )? <><strong>Monthly Discount Applied:</strong> {reservation.car.monthly_discount}%<br /><strong>Savings:</strong> ${totalMonthlyDiscount}<br /><strong>Total Discounted Price:</strong><>${totalAfterMothlyDiscount}</><br /></> : null }
           </Typography>
         </CardContent>
-    </Collapse>
+      </Collapse>
     </Card>
   )
 }
