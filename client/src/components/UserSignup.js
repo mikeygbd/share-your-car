@@ -40,90 +40,90 @@ const UserSignup = ({ history, signupFormData, updateSignupForm, signup}) => {
 
     return (
       <div className="SignUp">
-    <div className="UserForm">
+        <div className="UserForm">
 
-        <div className="UserForm-title">
-        <Toolbar>Enter Your Details</Toolbar>
+          <div className="UserForm-title">
+            <Toolbar>Enter Your Details</Toolbar>
+          </div>
+          <br />
+          <form id="multi-form" onSubmit={handleSubmit}>
+            <TextField
+              name="firstname"
+              placeholder="First Name"
+              onChange={handleUserChange}
+              value={signupFormData.firstname}
+              required
+              />
+            <br />
+            <TextField
+              name="lastname"
+              placeholder="Last Name"
+              onChange={handleUserChange}
+              value={signupFormData.lastname}
+              required
+              />
+            <br />
+            <TextField
+              name="email"
+              placeholder="Email"
+              onChange={handleUserChange}
+              value={signupFormData.email}
+              />
+            <br />
+            <TextField
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={handleUserChange}
+              value={signupFormData.password}
+              />
+            <br />
+            <TextField
+              name="img"
+              type="text"
+              placeholder="Img URL"
+              onChange={handleUserChange}
+              value={signupFormData.img}
+              />
+
+            <br />
+            <TextField
+              name="city"
+              placeholder="City"
+              onChange={handleHometownChange}
+              value={signupFormData.city}
+              />
+            <br />
+            <TextField
+              name="state"
+              type="text"
+              placeholder="State"
+              onChange={handleHometownChange}
+              value={signupFormData.state}
+
+              />
+            <br />
+            <TextField
+              name="country"
+              type="text"
+              placeholder="Country"
+              onChange={handleHometownChange}
+              value={signupFormData.country}
+
+              />
+            <br />
+            <div className="reg-btn">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                >Sign Up</Button>
+            </div>
+
+
+          </form>
         </div>
-        <br />
-        <form id="multi-form" onSubmit={handleSubmit}>
-        <TextField
-        name="firstname"
-        placeholder="First Name"
-        onChange={handleUserChange}
-        value={signupFormData.firstname}
-        required
-        />
-        <br />
-        <TextField
-        name="lastname"
-        placeholder="Last Name"
-        onChange={handleUserChange}
-        value={signupFormData.lastname}
-        required
-        />
-        <br />
-        <TextField
-        name="email"
-        placeholder="Email"
-        onChange={handleUserChange}
-        value={signupFormData.email}
-        />
-        <br />
-        <TextField
-        name="password"
-        type="password"
-        placeholder="Password"
-        onChange={handleUserChange}
-        value={signupFormData.password}
-        />
-        <br />
-        <TextField
-        name="img"
-        type="text"
-        placeholder="Img URL"
-        onChange={handleUserChange}
-        value={signupFormData.img}
-        />
-
-        <br />
-        <TextField
-        name="city"
-        placeholder="City"
-        onChange={handleHometownChange}
-        value={signupFormData.city}
-        />
-        <br />
-        <TextField
-        name="state"
-        type="text"
-        placeholder="State"
-        onChange={handleHometownChange}
-        value={signupFormData.state}
-
-        />
-        <br />
-        <TextField
-        name="country"
-        type="text"
-        placeholder="Country"
-        onChange={handleHometownChange}
-        value={signupFormData.country}
-
-        />
-        <br />
-        <div className="reg-btn">
-        <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        >Sign Up</Button>
-        </div>
-
-
-    </form>
-</div>
-</div>
+      </div>
     )
   }
 
