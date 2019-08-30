@@ -7,7 +7,6 @@ const MyBookings = ({ myBookings, currentUser}) => {
 
   return (
     <div className="MyBookings">
-
      {bookingCards}
     </div>
   )
