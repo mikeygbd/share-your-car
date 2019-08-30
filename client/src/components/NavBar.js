@@ -154,7 +154,7 @@ const NavBar = ({ currentUser, myCars }) => {
      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
      open={isMobileMenuOpen}
      onClose={handleMobileMenuClose}
-   >
+     >
      <MenuItem>
        <IconButton aria-label="Show 4 new mails" color="inherit">
          <Badge badgeContent={4} color="secondary">
@@ -177,7 +177,7 @@ const NavBar = ({ currentUser, myCars }) => {
          aria-controls="primary-search-account-menu"
          aria-haspopup="true"
          color="inherit"
-       >
+         >
          <AccountCircle />
        </IconButton>
        <p>Profile</p>
@@ -188,67 +188,67 @@ const NavBar = ({ currentUser, myCars }) => {
   return (
     <div className={classes.grow}>
       <div className={classes.root}>
-      <AppBar className={classes.background} position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            <strong>{ currentUser ? `Wlecome, ${currentUser.firstname} ${currentUser.lastname}` : "" }</strong>
-          </Typography>
-          <br />
-          <div className="login-logout-btn">
-
-          </div>
-          <div className="tabs">
-            {!currentUser ? <div className="navbar-space"></div> : null}
-          <Tabs variant="fullWidth" indicatorColor="primary" value={value} onChange={handleChange}>
-
-            <Tab centered='true' label='About'  to='/about' component={Link} />
-            <Tab centered='true' label='Cars'  to='/cars' component={Link} />
-            <Tab centered='true' label={<img src={logo}  width="50" alt="Logo"/>}  to='/' component={Link}  />
-            { currentUser && myCars.length > 0 ? <Tab centered='true' label='My Cars'  to='/my_cars' component={Link} /> : null}
-            { currentUser ? <Tab centered='true' label='Logout'  to='/logout' component={Link} /> : <Tab centered='true' label='Login'  to='/login' component={Link} />}
-            { currentUser ? null : <Tab centered='true' label='Sign Up'  to='/signup' component={Link} />}
-            { currentUser ? <Tab className="Account-Circle" centered='true' label={<AccountCircle/>} to='/my_profile' component={Link}/> : null}
-          </Tabs>
-          </div>
-
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+        <AppBar className={classes.background} position="static">
+          <Toolbar>
             <IconButton
-              edge="end"
-              aria-label="Account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              edge="start"
+              className={classes.menuButton}
               color="inherit"
-            >
+              aria-label="Open drawer"
+              >
+              <MenuIcon />
+            </IconButton>
+            <Typography className={classes.title} variant="h6" noWrap>
+              <strong>{ currentUser ? `Wlecome, ${currentUser.firstname} ${currentUser.lastname}` : "" }</strong>
+            </Typography>
+            <br />
+            <div className="login-logout-btn">
 
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="Show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+            </div>
+            <div className="tabs">
+              {!currentUser ? <div className="navbar-space"></div> : null}
+              <Tabs variant="fullWidth" indicatorColor="primary" value={value} onChange={handleChange}>
+
+                <Tab centered='true' label='About'  to='/about' component={Link} />
+                <Tab centered='true' label='Cars'  to='/cars' component={Link} />
+                <Tab centered='true' label={<img src={logo}  width="50" alt="Logo"/>}  to='/' component={Link}  />
+                { currentUser && myCars.length > 0 ? <Tab centered='true' label='My Cars'  to='/my_cars' component={Link} /> : null}
+                { currentUser ? <Tab centered='true' label='Logout'  to='/logout' component={Link} /> : <Tab centered='true' label='Login'  to='/login' component={Link} />}
+                { currentUser ? null : <Tab centered='true' label='Sign Up'  to='/signup' component={Link} />}
+                { currentUser ? <Tab className="Account-Circle" centered='true' label={<AccountCircle/>} to='/my_profile' component={Link}/> : null}
+              </Tabs>
+            </div>
+
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton
+                edge="end"
+                aria-label="Account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+                >
+
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="Show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+                >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
       </div>
+    </div>
   )
 }
 
